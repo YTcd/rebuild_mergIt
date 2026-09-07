@@ -12,14 +12,27 @@ public class Drager : MonoBehaviour
     private float cameraDepth;
     private Vector2 clickOffset;
 
+    private ImageChanger imageChanger;
+
     [SerializeField]
     bool isClicked;
+
+    [SerializeField]
+    Vector3 originScale;
+    [SerializeField]
+    Vector3 clickedScale;
 
     void OnEnable()
     {
         clickOffset = new Vector2(0, 0);
         isClicked = false;
         cameraDepth = Mathf.Abs(Camera.main.transform.position.z);
+
+        originScale = new Vector3(1f, 1f, 1f);
+        clickedScale = new Vector3(1.2f, 1.2f, 1f);
+
+        imageChanger = GetComponent<ImageChanger>();
+
         mouseEvent = InputSystem.actions.FindAction("Point");
         clickAction = InputSystem.actions.FindAction("Click");
         clickAction.started += OnDragStart;
@@ -53,11 +66,13 @@ public class Drager : MonoBehaviour
         Collider2D hit = Physics2D.OverlapPoint(world);
         if (hit == null) return;
 
+        transform.localScale = clickedScale;
         isClicked = true;
     }
 
     private void OnDragEnd(InputAction.CallbackContext ctx)
     {
         isClicked = false;
+        transform.localScale = originScale;
     }
 }
