@@ -35,6 +35,6 @@ public class GridHandler : MonoBehaviour
 
     private bool IsValidIndex(int x, int y)
     {
-        return x > 0 && x < 9 && y > 0 && y < 9;
+        return x >= 0 && x < 9 && y >= 0 && y < 9;
     }
 }

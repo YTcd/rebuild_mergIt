@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private float TileSpriteSize = 74f;
+    public static GameManager instance;
     [SerializeField]
     private Camera MainCamera;
     [SerializeField]
@@ -17,14 +16,15 @@ public class GameManager : MonoBehaviour
     private int lastWidth, lastHeight;
 
     public Vector2[,] GridPositions;
+    public float TileSpriteSize = 74f;
 
     void Awake()
     {
+        instance = this;
         BoardSize = TileSpriteSize * GridSize;
         GridPositions = new Vector2[9, 9];
         Fit();
         GenerateBoard();
-        GenerateButton();
     }
 
     void Update()
@@ -65,19 +65,6 @@ public class GameManager : MonoBehaviour
                 sr.sprite = tileSprite;
                 sr.sortingOrder = 0;
             }
-        }
-    }
-
-    private void GenerateButton()
-    {
-        float aspect = (float)Screen.width / Screen.height;
-        if (aspect > 1)
-        {
-
-        }
-        else
-        {
-
         }
     }
 }
