@@ -11,8 +11,7 @@ public class Drager : MonoBehaviour
     private Vector3 worldPos;
     private float cameraDepth;
     private Camera MainCamera;
-
-    private ImageChanger imageChanger;
+    private SpriteRenderer spriteRenderer;
 
     [SerializeField]
     bool isClicked;
@@ -25,14 +24,13 @@ public class Drager : MonoBehaviour
     void Awake()
     {
         MainCamera = Camera.main;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     void OnEnable()
     {
         isClicked = false;
         cameraDepth = Mathf.Abs(MainCamera.transform.position.z);
-
-        imageChanger = GetComponent<ImageChanger>();
 
         mouseEvent = InputSystem.actions.FindAction("Point");
         clickAction = InputSystem.actions.FindAction("Click");
@@ -76,6 +74,7 @@ public class Drager : MonoBehaviour
         Collider2D hit = Physics2D.OverlapPoint(world);
         if (hit == null || hit.gameObject != gameObject) return;
 
+        spriteRenderer.sortingOrder = 2;
         originScale = transform.localScale;
         transform.localScale = originScale * 1.2f;
         isClicked = true;
@@ -95,22 +94,26 @@ public class Drager : MonoBehaviour
     {
         Vector2 CurrentPos = (Vector2)transform.position;
         Vector2 NearestPos = CurrentPos;
+        Vector2Int NearestIndex = new Vector2Int();
         float minValue = float.PositiveInfinity;
-        Vector2[,] CellCenterPoints = GameManager.instance.GridPositions;
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 9; j++)
             {
-                Vector2 GridPos = CellCenterPoints[i, j];
+                Vector2 GridPos = GridHandler.instance.getPosition(new Vector2Int(i, j));
                 float distance = Vector2.Distance(CurrentPos, GridPos);
                 if (distance <= minValue)
                 {
                     NearestPos = GridPos;
                     minValue = distance;
+                    NearestIndex.x = i;
+                    NearestIndex.y = j;
                 }
             }
         }
 
         transform.position = (Vector3)NearestPos;
+        spriteRenderer.sortingOrder = 1;
+        MergeManager.instance.TryMerge(gameObject, NearestIndex);
     }
 }

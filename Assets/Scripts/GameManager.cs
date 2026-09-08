@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     private float BoardSize;
     private int lastWidth, lastHeight;
 
-    public Vector2[,] GridPositions;
     public float TileSpriteSize = 74f;
     public Rect BoardBounds;
 
@@ -23,7 +22,6 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         BoardSize = TileSpriteSize * GridSize;
-        GridPositions = new Vector2[9, 9];
         Fit();
         GenerateBoard();
     }
@@ -58,7 +56,7 @@ public class GameManager : MonoBehaviour
             for (int y = 0; y < GridSize; y++)
             {
                 Vector2 pos = new Vector2((x - offset) * TileSpriteSize, (y - offset) * TileSpriteSize);
-                GridPositions[x, y] = pos;
+                GridHandler.instance.setPosition(x, y, pos);
 
                 GameObject tile = new GameObject($"Tile_{x}_{y}");
                 tile.transform.SetParent(Board.transform);

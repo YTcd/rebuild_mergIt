@@ -2,39 +2,59 @@ using UnityEngine;
 
 public class GridHandler : MonoBehaviour
 {
-    private bool[,] hasItemInCell = new bool[9, 9];
+    public static GridHandler instance;
+
+    private GameObject[,] Cells = new GameObject[9, 9];
+    private Vector2[,] GridPositions;
 
     void Awake()
     {
+        instance = this;
+        GridPositions = new Vector2[9, 9];
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 9; j++)
             {
-                hasItemInCell[i, j] = false;
+                Cells[i, j] = null;
             }
         }
     }
 
-    public void StoreItem(int x, int y)
+    public void setPosition(int x, int y, Vector2 pos)
     {
-        if (!IsValidIndex(x, y)) return;
-        hasItemInCell[x, y] = true;
+        GridPositions[x, y] = pos;
     }
 
-    public void ReleaseItem(int x, int y)
+    public Vector2 getPosition(Vector2Int GridIndex)
     {
-        if (!IsValidIndex(x, y)) return;
-        hasItemInCell[x, y] = false;
+        return GridPositions[GridIndex.x, GridIndex.y];
     }
 
-    public bool HasItem(int x, int y)
+    public void StoreItem(Vector2Int GridIndex, GameObject gameObject)
     {
-        if (!IsValidIndex(x, y)) return false;
-        return hasItemInCell[x, y];
+        if (!IsValidIndex(GridIndex)) return;
+        Cells[GridIndex.x, GridIndex.y] = gameObject;
     }
 
-    private bool IsValidIndex(int x, int y)
+    public void ReleaseItem(Vector2Int GridIndex)
     {
-        return x >= 0 && x < 9 && y >= 0 && y < 9;
+        if (!IsValidIndex(GridIndex)) return;
+        Cells[GridIndex.x, GridIndex.y] = null;
+    }
+
+    public bool HasItem(Vector2Int GridIndex)
+    {
+        if (!IsValidIndex(GridIndex)) return false;
+        return Cells[GridIndex.x, GridIndex.y] != null;
+    }
+
+    public GameObject getItem(Vector2Int GridIndex)
+    {
+        return Cells[GridIndex.x, GridIndex.y];
+    }
+
+    private bool IsValidIndex(Vector2Int GridIndex)
+    {
+        return GridIndex.x >= 0 && GridIndex.x < 9 && GridIndex.y >= 0 && GridIndex.y < 9;
     }
 }

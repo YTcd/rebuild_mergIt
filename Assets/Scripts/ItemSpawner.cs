@@ -5,44 +5,41 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField]
     private GameObject IconPrefab;
     [SerializeField]
-    private GridHandler GridHandler;
-    [SerializeField]
-    private Sprite[] Sprites = new Sprite[5];
-    [SerializeField]
     private GameObject IconContainer;
 
     public void GenerateIcon()
     {
-        Vector2 ValidPos = GetEmptyGrid();
-        GameObject icon = Instantiate(IconPrefab, ValidPos, Quaternion.identity, IconContainer.transform);
+        Vector2Int ValidPos = GetEmptyGrid();
+        GameObject icon = Instantiate(IconPrefab, (Vector3)(Vector2)ValidPos, Quaternion.identity, IconContainer.transform);
+        GridHandler.instance.StoreItem(ValidPos, icon);
 
-        Vector2 coodPos = GameManager.instance.GridPositions[(int)ValidPos.x, (int)ValidPos.y];
+        Vector2 coodPos = GridHandler.instance.getPosition(ValidPos);
         icon.transform.position = coodPos;
 
-        int randIndex = Random.Range(0, 5);
+        ImageChanger imageChanger = icon.GetComponent<ImageChanger>();
+        imageChanger.init();
+
         SpriteRenderer sr = icon.GetComponent<SpriteRenderer>();
-        sr.sortingOrder = 2;
-        sr.sprite = Sprites[randIndex];
 
         float spriteWorldSize = sr.sprite.bounds.size.x;
         float scale = GameManager.instance.TileSpriteSize / spriteWorldSize;
         icon.transform.localScale = new Vector3(scale, scale, 1f);
     }
 
-    private Vector2 GetEmptyGrid()
+    private Vector2Int GetEmptyGrid()
     {
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 9; j++)
             {
-                if (GridHandler.HasItem(i, j) == false)
+                Vector2Int newIndex = new Vector2Int(i, j);
+                if (GridHandler.instance.HasItem(newIndex) == false)
                 {
-                    GridHandler.StoreItem(i, j);
-                    return new Vector2(i, j);
+                    return new Vector2Int(i, j);
                 }
             }
         }
 
-        return Vector2.zero;
+        return Vector2Int.zero;
     }
 }
