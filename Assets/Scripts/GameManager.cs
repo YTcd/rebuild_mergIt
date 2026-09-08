@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public Vector2[,] GridPositions;
     public float TileSpriteSize = 74f;
+    public Rect BoardBounds;
 
     void Awake()
     {
@@ -48,6 +49,9 @@ public class GameManager : MonoBehaviour
         float spriteWorldSize = tileSprite.bounds.size.x;
         float scale = TileSpriteSize / spriteWorldSize;
         float offset = (GridSize - 1) / 2f;
+
+        float halfBoardSize = BoardSize / 2f;
+        BoardBounds = new Rect(-halfBoardSize, -halfBoardSize, BoardSize, BoardSize);
 
         for (int x = 0; x < GridSize; x++)
         {
