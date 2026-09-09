@@ -14,14 +14,25 @@ public class MergeManager : MonoBehaviour
     {
         if (!GridHandler.instance.HasItem(GridIndex)) return;
 
-        int dragedItemIndex = dragedItem.GetComponent<ImageChanger>().IconIndex;
+        Icon dragedIcon = dragedItem.GetComponent<Icon>();
+        int dragedItemIndex = dragedIcon.GetSpriteIndex();
 
         GameObject storedItem = GridHandler.instance.getItem(GridIndex);
-        int storedItemIndex = storedItem.GetComponent<ImageChanger>().IconIndex;
+        if (storedItem == null)
+        {
+            return;
+        }
 
-        if (dragedItemIndex != storedItemIndex) return;
+        int storedItemIndex = storedItem.GetComponent<Icon>().GetSpriteIndex();
 
-        StartCoroutine(MergeItem(dragedItem, storedItem));
+        if (dragedItemIndex != storedItemIndex || dragedItemIndex == 4)
+        {
+            dragedIcon.returnToOriginPos();
+        }
+        else
+        {
+            StartCoroutine(MergeItem(dragedItem, storedItem));
+        }
     }
 
     private IEnumerator MergeItem(GameObject dragedItem, GameObject storedItem)
@@ -40,9 +51,10 @@ public class MergeManager : MonoBehaviour
         }
 
         dragedItem.transform.position = targetPos;
-        Destroy(dragedItem);
 
-        ImageChanger storedImageChanger = storedItem.GetComponent<ImageChanger>();
-        storedImageChanger.SetIcon(storedImageChanger.IconIndex + 1);
+        Icon dragedIcon = dragedItem.GetComponent<Icon>();
+        PoolingManger.instance.returnItemToPool(dragedIcon);
+
+        storedItem.GetComponent<Icon>().UpgradeItem();
     }
 }

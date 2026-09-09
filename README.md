@@ -1,8 +1,7 @@
-- DragEnd 시점에서 같은 아이콘이라면 파괴하는 로직 적용
-- 아직 GridHandler에서 Release하는 로직을 쓰질 않아서 엉뚱한 곳에서 터지는 중
-- 5보다 인덱스 올라가면 안 합쳐지는 조건 추가해야할듯
-- 코루틴+Lerp 방식 일부 수정 필요
-
+- TryMerge 이전에 아이템 검사할지, 그냥 Try 시킬지 고민
+    - MergeManager에 맡기기엔 현재 Icon의 정보들이 많이 필요하고 해당 정보를 넘겨도 쓸모가 없을 수 있음
+- 제자리 클릭시 아이템 사라짐
+- 5레벨 아이템 머지 시도시 사라짐
 
 - camera orthographicSize
 - array 2차원 배열과 Jagged 배열

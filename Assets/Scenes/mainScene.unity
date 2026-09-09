@@ -223,15 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0367566ef372e24fa6448a3832b9068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemSpawner
-  IconPrefab: {fileID: 1777888854047298144, guid: 5ec3d2fcac341bd4f94b6064d5c5819d, type: 3}
-  GridHandler: {fileID: 100196300}
-  Sprites:
-  - {fileID: 8915858129301355781, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
-  - {fileID: 4591913763459182045, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
-  - {fileID: 2918908478424477003, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
-  - {fileID: 4927645399036467294, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
-  - {fileID: -17606480551474936, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
   IconContainer: {fileID: 866091454}
+  PoolingManager: {fileID: 1272742239}
 --- !u!4 &326264741
 Transform:
   m_ObjectHideFlags: 0
@@ -276,7 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4648edb3b85d89c46b7f2bcf1657f5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MergeManager
-  gridHandler: {fileID: 100196300}
 --- !u!4 &460766028
 Transform:
   m_ObjectHideFlags: 0
@@ -539,6 +531,51 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1272742238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1272742240}
+  - component: {fileID: 1272742239}
+  m_Layer: 0
+  m_Name: PoolingManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1272742239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272742238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc428030cf63994f8c255506b93ad5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemPool
+  IconPrefab: {fileID: 8962540437689299148, guid: 5ec3d2fcac341bd4f94b6064d5c5819d, type: 3}
+--- !u!4 &1272742240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272742238}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -127.75915, y: -152.1563, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,6 +869,7 @@ MonoBehaviour:
   MainCamera: {fileID: 519420034}
   tileSprite: {fileID: 1102526082827792319, guid: 69a7dd20c71a8dd47ba887df23cd00fd, type: 3}
   Board: {fileID: 154805410}
+  PoolingManger: {fileID: 0}
   TileSpriteSize: 74
   BoardBounds:
     serializedVersion: 2
@@ -961,3 +999,4 @@ SceneRoots:
   - {fileID: 100196299}
   - {fileID: 1621572023}
   - {fileID: 1627934031}
+  - {fileID: 1272742240}

@@ -3,27 +3,18 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject IconPrefab;
-    [SerializeField]
     private GameObject IconContainer;
+    [SerializeField]
+    private PoolingManger PoolingManager;
 
     public void GenerateIcon()
     {
         Vector2Int ValidPos = GetEmptyGrid();
-        GameObject icon = Instantiate(IconPrefab, (Vector3)(Vector2)ValidPos, Quaternion.identity, IconContainer.transform);
-        GridHandler.instance.StoreItem(ValidPos, icon);
-
-        Vector2 coodPos = GridHandler.instance.getPosition(ValidPos);
-        icon.transform.position = coodPos;
-
-        ImageChanger imageChanger = icon.GetComponent<ImageChanger>();
-        imageChanger.init();
-
-        SpriteRenderer sr = icon.GetComponent<SpriteRenderer>();
-
-        float spriteWorldSize = sr.sprite.bounds.size.x;
-        float scale = GameManager.instance.TileSpriteSize / spriteWorldSize;
-        icon.transform.localScale = new Vector3(scale, scale, 1f);
+        Icon item = PoolingManager.GetItem();
+        item.gameObject.transform.parent = IconContainer.transform;
+        GridHandler.instance.StoreItem(ValidPos, item.gameObject);
+        Icon icon = item.GetComponent<Icon>();
+        icon.Init(ValidPos);
     }
 
     private Vector2Int GetEmptyGrid()

@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     private Sprite tileSprite;
     [SerializeField]
     private GameObject Board;
+    [SerializeField]
+    private PoolingManger PoolingManger;
 
     private const int GridSize = 9;
 

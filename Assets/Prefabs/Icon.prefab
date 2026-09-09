@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6040290839400617197}
   - component: {fileID: 319932491092278427}
+  - component: {fileID: 8962540437689299148}
   - component: {fileID: 1970013783860619490}
-  - component: {fileID: 5500106984378334940}
   - component: {fileID: 8850038602297308472}
   m_Layer: 0
   m_Name: Icon
@@ -93,6 +93,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8962540437689299148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777888854047298144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63fa89bae63eb2245a54fb35a207424e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Icon
+  iconSprites:
+  - {fileID: 8915858129301355781, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
+  - {fileID: 4591913763459182045, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
+  - {fileID: 2918908478424477003, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
+  - {fileID: 4927645399036467294, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
+  - {fileID: -17606480551474936, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
 --- !u!114 &1970013783860619490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,25 +144,6 @@ MonoBehaviour:
   isClicked: 0
   originScale: {x: 0, y: 0, z: 0}
   clickedScale: {x: 0, y: 0, z: 0}
---- !u!114 &5500106984378334940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777888854047298144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dd9a408fe3a9934e8eec949e230453b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ImageChanger
-  spriteRenderer: {fileID: 319932491092278427}
-  iconSprites:
-  - {fileID: 8915858129301355781, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
-  - {fileID: 4591913763459182045, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
-  - {fileID: 2918908478424477003, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
-  - {fileID: 4927645399036467294, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
-  - {fileID: -17606480551474936, guid: 148c8bf9eb680a643b92e08fcda120c6, type: 3}
 --- !u!61 &8850038602297308472
 BoxCollider2D:
   m_ObjectHideFlags: 0
