@@ -1,0 +1,884 @@
+fileFormatVersion: 2
+guid: f3f34379382ea714189376ca73a6ab13
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6865422375832517444
+    second: fusion_0
+  - first:
+      213: 1194632788925929678
+    second: fusion_1
+  - first:
+      213: 2970198116042545165
+    second: fusion_2
+  - first:
+      213: -6029713840022358251
+    second: fusion_3
+  - first:
+      213: 8679507472609565627
+    second: fusion_4
+  - first:
+      213: 3147659533077364278
+    second: fusion_5
+  - first:
+      213: 4842439888638873658
+    second: fusion_6
+  - first:
+      213: 6347578947212659770
+    second: fusion_7
+  - first:
+      213: 4919466088561906517
+    second: fusion_8
+  - first:
+      213: 776844219835568792
+    second: fusion_9
+  - first:
+      213: 7223994775363131077
+    second: fusion_10
+  - first:
+      213: 5987412185993393764
+    second: fusion_11
+  - first:
+      213: -433326999760536602
+    second: fusion_12
+  - first:
+      213: 7561664738157090924
+    second: fusion_13
+  - first:
+      213: -39193420844958229
+    second: fusion_14
+  - first:
+      213: -6944165828135022137
+    second: fusion_15
+  - first:
+      213: -7179674702993303786
+    second: fusion_16
+  - first:
+      213: 2130623958014175941
+    second: fusion_17
+  - first:
+      213: 1334934089391638206
+    second: fusion_18
+  - first:
+      213: -1893192233130046215
+    second: fusion_19
+  - first:
+      213: 8774134367449307192
+    second: fusion_20
+  - first:
+      213: 399147992565974974
+    second: fusion_21
+  - first:
+      213: 5391972925270376330
+    second: fusion_22
+  - first:
+      213: 3621451268364536283
+    second: fusion_23
+  - first:
+      213: 3512432018471043167
+    second: fusion_24
+  - first:
+      213: 7510936349181473670
+    second: fusion_25
+  - first:
+      213: 1879523452060740987
+    second: fusion_26
+  - first:
+      213: -1045098563233254251
+    second: fusion_27
+  - first:
+      213: 2540344681161907851
+    second: fusion_28
+  - first:
+      213: 3636477274180140247
+    second: fusion_29
+  - first:
+      213: 2898829267462294537
+    second: fusion_30
+  - first:
+      213: 1460222918854592240
+    second: fusion_31
+  - first:
+      213: -1674725789822314397
+    second: fusion_32
+  - first:
+      213: 956115085979202175
+    second: fusion_33
+  - first:
+      213: 8818303848433628640
+    second: fusion_34
+  - first:
+      213: 4977791332829416664
+    second: fusion_35
+  - first:
+      213: 1411997865160031285
+    second: fusion_36
+  - first:
+      213: -1070190593766340112
+    second: fusion_37
+  - first:
+      213: 9035389493906863528
+    second: fusion_38
+  - first:
+      213: -1644631960619354069
+    second: fusion_39
+  - first:
+      213: 5481883576002375125
+    second: fusion_40
+  - first:
+      213: 3115507825430717969
+    second: fusion_41
+  - first:
+      213: 3531901739716185166
+    second: fusion_42
+  - first:
+      213: -8628741454196424112
+    second: fusion_43
+  - first:
+      213: -1938740686362318220
+    second: fusion_44
+  - first:
+      213: -2998611239658586505
+    second: fusion_45
+  - first:
+      213: -1100774838248800955
+    second: fusion_46
+  - first:
+      213: -2560358226767815506
+    second: fusion_47
+  - first:
+      213: -560671898869478846
+    second: fusion_48
+  - first:
+      213: 7572540224960108854
+    second: fusion_49
+  - first:
+      213: -7638674609221987191
+    second: fusion_50
+  - first:
+      213: -2384116744074881688
+    second: fusion_51
+  - first:
+      213: 398504626328192377
+    second: fusion_52
+  - first:
+      213: 27083150967478770
+    second: fusion_53
+  - first:
+      213: -8194351629361970792
+    second: fusion_54
+  - first:
+      213: 7555278755307526777
+    second: fusion_55
+  - first:
+      213: 3441465478594526711
+    second: fusion_56
+  - first:
+      213: -1129981874003421503
+    second: fusion_57
+  - first:
+      213: -4473053900796107071
+    second: fusion_58
+  - first:
+      213: -586371224035818900
+    second: fusion_59
+  - first:
+      213: -3739882660403850183
+    second: fusion_60
+  - first:
+      213: 7421820001905852944
+    second: fusion_61
+  - first:
+      213: 5900370810234187874
+    second: fusion_62
+  - first:
+      213: -1626167255483559900
+    second: fusion_63
+  - first:
+      213: 3667799783469551007
+    second: fusion_64
+  - first:
+      213: -2568383450117412232
+    second: fusion_65
+  - first:
+      213: -7134273606590236588
+    second: fusion_66
+  - first:
+      213: 5957760698349390958
+    second: fusion_67
+  - first:
+      213: -4160441199946787254
+    second: fusion_68
+  - first:
+      213: 6802238771186198836
+    second: fusion_69
+  - first:
+      213: -3234159306620406259
+    second: fusion_70
+  - first:
+      213: 3039866136364747255
+    second: fusion_71
+  - first:
+      213: -4944838112314851454
+    second: fusion_72
+  - first:
+      213: 1848486219423333932
+    second: fusion_73
+  - first:
+      213: -489825882204030320
+    second: fusion_74
+  - first:
+      213: 933154372587853326
+    second: fusion_75
+  - first:
+      213: -357856919680127929
+    second: fusion_76
+  - first:
+      213: -2563208742281783374
+    second: fusion_77
+  - first:
+      213: -7738244373102242111
+    second: fusion_78
+  - first:
+      213: -5023975755124026914
+    second: fusion_79
+  - first:
+      213: 8338674227485670750
+    second: fusion_80
+  - first:
+      213: -6072414860907009299
+    second: fusion_81
+  - first:
+      213: -3398386561471147024
+    second: fusion_82
+  - first:
+      213: -701901163669269363
+    second: fusion_83
+  - first:
+      213: -6599845621760571601
+    second: fusion_84
+  - first:
+      213: -1527289833978899066
+    second: fusion_85
+  - first:
+      213: 670560830002184241
+    second: fusion_86
+  - first:
+      213: 682246849928209864
+    second: fusion_87
+  - first:
+      213: -6856941500390834133
+    second: fusion_88
+  - first:
+      213: 9056851910175034857
+    second: fusion_89
+  - first:
+      213: 8292407950873637774
+    second: fusion_90
+  - first:
+      213: -2648436301155768157
+    second: fusion_91
+  - first:
+      213: 1189991180555489589
+    second: fusion_92
+  - first:
+      213: 8499132303600158207
+    second: fusion_93
+  - first:
+      213: -5126848916447164681
+    second: fusion_94
+  - first:
+      213: -243427442305839466
+    second: fusion_95
+  - first:
+      213: 5047650591107821459
+    second: fusion_96
+  - first:
+      213: 5811856846722053479
+    second: fusion_97
+  - first:
+      213: 8985468030532610537
+    second: fusion_98
+  - first:
+      213: -2989973246759573724
+    second: fusion_99
+  - first:
+      213: -4437013858827654740
+    second: fusion_100
+  - first:
+      213: 9117479100898970271
+    second: fusion_101
+  - first:
+      213: -1215709949758937218
+    second: fusion_102
+  - first:
+      213: 1234267121963196061
+    second: fusion_103
+  - first:
+      213: 7255274765231543555
+    second: fusion_104
+  - first:
+      213: -2424308713208508422
+    second: fusion_105
+  - first:
+      213: 5077796840715711833
+    second: fusion_106
+  - first:
+      213: 8066631896217844618
+    second: fusion_107
+  - first:
+      213: 2364384338229592695
+    second: fusion_108
+  - first:
+      213: 1350576083866499037
+    second: fusion_109
+  - first:
+      213: 4816794444081169835
+    second: fusion_110
+  - first:
+      213: -2829976130460791103
+    second: fusion_111
+  - first:
+      213: -8278071014811328682
+    second: fusion_112
+  - first:
+      213: 6077693363316780183
+    second: fusion_113
+  - first:
+      213: -1068612635555900570
+    second: fusion_114
+  - first:
+      213: -3640008110027436682
+    second: fusion_115
+  - first:
+      213: -39423473348995531
+    second: fusion_116
+  - first:
+      213: -4315216078659077225
+    second: fusion_117
+  - first:
+      213: -5797914528521971102
+    second: fusion_118
+  - first:
+      213: 3073362680086261598
+    second: fusion_119
+  - first:
+      213: 5725929759307235356
+    second: fusion_120
+  - first:
+      213: -5930047559034260926
+    second: fusion_121
+  - first:
+      213: -8785027941249862026
+    second: fusion_122
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fusion_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 921
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44bf388b641e64f50800000000000000
+      internalID: 6865422375832517444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_1
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 915
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec8d6fc2130349010800000000000000
+      internalID: 1194632788925929678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_2
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 901
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0810432373483920800000000000000
+      internalID: 2970198116042545165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_3
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 893
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 517f5349537225ca0800000000000000
+      internalID: -6029713840022358251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_4
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 596
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbbdd327f0ec37870800000000000000
+      internalID: 8679507472609565627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_5
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 599
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63eb2f61babbeab20800000000000000
+      internalID: 3147659533077364278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_6
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 598
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3090802c6dc33340800000000000000
+      internalID: 4842439888638873658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_7
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 601
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3ccb5ceb61271850800000000000000
+      internalID: 6347578947212659770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_8
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 322
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5531055d754754440800000000000000
+      internalID: 4919466088561906517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 323
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8925d19b3b7e7ca00800000000000000
+      internalID: 776844219835568792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_10
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 322
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c61ccc49f8c04460800000000000000
+      internalID: 7223994775363131077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_11
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 320
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4663bf519af871350800000000000000
+      internalID: 5987412185993393764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_12
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 35
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ebffabb3638cf9f0800000000000000
+      internalID: -433326999760536602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_13
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 37
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c685374140e60f860800000000000000
+      internalID: 7561664738157090924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_14
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 35
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bedf0099ac1c47ff0800000000000000
+      internalID: -39193420844958229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fusion_15
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 1
+        width: 308
+        height: 308
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c11b9898fd51af90800000000000000
+      internalID: -6944165828135022137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a4f97b14033c72a4ba09447b1c67582b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: False
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":4.0},"gridSpriteSize":{"x":308.0,"y":308.0},"gridSpriteOffset":{"x":19.0,"y":21.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      fusion_0: 6865422375832517444
+      fusion_1: 1194632788925929678
+      fusion_10: 7223994775363131077
+      fusion_11: 5987412185993393764
+      fusion_12: -433326999760536602
+      fusion_13: 7561664738157090924
+      fusion_14: -39193420844958229
+      fusion_15: -6944165828135022137
+      fusion_2: 2970198116042545165
+      fusion_3: -6029713840022358251
+      fusion_4: 8679507472609565627
+      fusion_5: 3147659533077364278
+      fusion_6: 4842439888638873658
+      fusion_7: 6347578947212659770
+      fusion_8: 4919466088561906517
+      fusion_9: 776844219835568792
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
