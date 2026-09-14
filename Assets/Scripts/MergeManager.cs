@@ -10,29 +10,10 @@ public class MergeManager : MonoBehaviour
         instance = this;
     }
 
-    public void TryMerge(GameObject dragedItem, Vector2Int GridIndex)
+    public void MergeItem(GameObject dragedItem, Vector2Int GridIndex)
     {
-        if (!GridHandler.instance.HasItem(GridIndex)) return;
-
-        Icon dragedIcon = dragedItem.GetComponent<Icon>();
-        int dragedItemIndex = dragedIcon.GetSpriteIndex();
-
         GameObject storedItem = GridHandler.instance.getItem(GridIndex);
-        if (storedItem == null)
-        {
-            return;
-        }
-
-        int storedItemIndex = storedItem.GetComponent<Icon>().GetSpriteIndex();
-
-        if (dragedItemIndex != storedItemIndex || dragedItemIndex == 4)
-        {
-            dragedIcon.returnToOriginPos();
-        }
-        else
-        {
-            StartCoroutine(MergeItem(dragedItem, storedItem));
-        }
+        StartCoroutine(MergeItem(dragedItem, storedItem));
     }
 
     private IEnumerator MergeItem(GameObject dragedItem, GameObject storedItem)

@@ -82,8 +82,28 @@ public class Icon : MonoBehaviour
             }
         }
 
-        transform.position = (Vector3)NearestPos;
         SpriteRenderer.sortingOrder = 1;
-        MergeManager.instance.TryMerge(gameObject, NearestIndex);
+        if (NearestIndex == GridIndex)
+        {
+            returnToOriginPos();
+        }
+        else if (!gridHandler.HasItem(NearestIndex))
+        {
+            gridHandler.ReleaseItem(GridIndex);
+            gridHandler.StoreItem(NearestIndex, gameObject);
+            GridIndex = NearestIndex;
+            transform.position = (Vector3)NearestPos;
+        }
+        else if (gridHandler.getItem(NearestIndex).GetComponent<Icon>().GetSpriteIndex() != spriteIndex
+        || spriteIndex == 4)
+        {
+            returnToOriginPos();
+        }
+        else
+        {
+            gridHandler.ReleaseItem(GridIndex);
+            MergeManager.instance.MergeItem(gameObject, NearestIndex);
+        }
+
     }
 }
