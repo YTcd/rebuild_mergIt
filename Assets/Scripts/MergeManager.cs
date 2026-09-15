@@ -36,6 +36,13 @@ public class MergeManager : MonoBehaviour
         Icon dragedIcon = dragedItem.GetComponent<Icon>();
         PoolingManger.instance.returnItemToPool(dragedIcon);
 
-        storedItem.GetComponent<Icon>().UpgradeItem();
+        Icon storedItemIcon = storedItem.GetComponent<Icon>();
+        storedItemIcon.isMerging = true;
+        storedItemIcon.setVisible(false);
+        FusionEffect effect = PoolingManger.instance.getFusionEffect();
+        yield return StartCoroutine(effect.PlayAndWait(targetPos));
+
+        storedItemIcon.setVisible(true);
+        storedItemIcon.UpgradeItem();
     }
 }

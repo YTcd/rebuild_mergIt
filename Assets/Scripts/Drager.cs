@@ -70,6 +70,8 @@ public class Drager : MonoBehaviour
 
     private void OnDragStart(InputAction.CallbackContext ctx)
     {
+        if (MainScript.isMerging == true) return;
+
         Vector2 pos = mouseEvent.ReadValue<Vector2>();
         Vector3 world = MainCamera.ScreenToWorldPoint(new Vector3(pos.x, pos.y, cameraDepth));
 

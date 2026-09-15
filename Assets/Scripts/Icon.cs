@@ -9,6 +9,7 @@ public class Icon : MonoBehaviour
     private int spriteIndex;
     private Vector2Int GridIndex;
     private GridHandler gridHandler;
+    public bool isMerging;
 
     void Awake()
     {
@@ -51,6 +52,7 @@ public class Icon : MonoBehaviour
 
     public void UpgradeItem()
     {
+        isMerging = false;
         spriteIndex++;
         SetIconSprite(spriteIndex);
     }
@@ -95,7 +97,7 @@ public class Icon : MonoBehaviour
             transform.position = (Vector3)NearestPos;
         }
         else if (gridHandler.getItem(NearestIndex).GetComponent<Icon>().GetSpriteIndex() != spriteIndex
-        || spriteIndex == 4)
+        || spriteIndex == 4 || gridHandler.getItem(NearestIndex).GetComponent<Icon>().isMerging == true)
         {
             returnToOriginPos();
         }
@@ -105,5 +107,10 @@ public class Icon : MonoBehaviour
             MergeManager.instance.MergeItem(gameObject, NearestIndex);
         }
 
+    }
+
+    public void setVisible(bool visible)
+    {
+        SpriteRenderer.enabled = visible;
     }
 }
