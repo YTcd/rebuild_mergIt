@@ -9,6 +9,11 @@ public class GridHandler : MonoBehaviour
 
     void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
         GridPositions = new Vector2[9, 9];
         for (int i = 0; i < 9; i++)

@@ -40,6 +40,12 @@ public class Drager : MonoBehaviour
         clickAction.canceled += OnDragEnd;
     }
 
+    void OnDisable()
+    {
+        clickAction.started -= OnDragStart;
+        clickAction.canceled -= OnDragEnd;
+    }
+
     void Update()
     {
         if (isClicked == true)

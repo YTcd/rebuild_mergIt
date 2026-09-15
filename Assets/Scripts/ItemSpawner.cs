@@ -10,6 +10,7 @@ public class ItemSpawner : MonoBehaviour
     public void GenerateIcon()
     {
         Vector2Int ValidPos = GetEmptyGrid();
+        if (ValidPos.x == -1) return;
         Icon item = PoolingManager.GetItem();
         item.gameObject.transform.parent = IconContainer.transform;
         GridHandler.instance.StoreItem(ValidPos, item.gameObject);
@@ -31,6 +32,6 @@ public class ItemSpawner : MonoBehaviour
             }
         }
 
-        return Vector2Int.zero;
+        return new Vector2Int(-1, -1);
     }
 }
