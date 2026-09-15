@@ -5,35 +5,35 @@ public class Icon : MonoBehaviour
     [SerializeField]
     private Sprite[] iconSprites = new Sprite[5];
 
-    private SpriteRenderer SpriteRenderer;
+    private SpriteRenderer spriteRenderer;
     private int spriteIndex;
-    private Vector2Int GridIndex;
+    private Vector2Int gridIndex;
     private GridHandler gridHandler;
-    public bool isMerging;
+    public bool IsMerging;
 
     void Awake()
     {
-        SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        gridHandler = GridHandler.instance;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        gridHandler = GridHandler.Instance;
     }
 
     void OnDisable()
     {
-        gridHandler.ReleaseItem(GridIndex);
+        gridHandler.ReleaseItem(gridIndex);
     }
 
     public void Init(Vector2Int position)
     {
-        GridIndex = position;
+        gridIndex = position;
         SetIconSprite(0);
 
-        Vector2 coodPos = gridHandler.getPosition(position);
+        Vector2 coodPos = gridHandler.GetPosition(position);
         transform.position = coodPos;
 
 
-        SpriteRenderer.sortingOrder = 1;
-        float spriteWorldSize = SpriteRenderer.sprite.bounds.size.x;
-        float scale = GameManager.instance.TileSpriteSize / spriteWorldSize;
+        spriteRenderer.sortingOrder = 1;
+        float spriteWorldSize = spriteRenderer.sprite.bounds.size.x;
+        float scale = GameManager.Instance.TileSpriteSize / spriteWorldSize;
         transform.localScale = new Vector3(scale, scale, 1f);
     }
 
@@ -42,7 +42,7 @@ public class Icon : MonoBehaviour
         if (index < 0 || index >= iconSprites.Length) return;
 
         spriteIndex = index;
-        SpriteRenderer.sprite = iconSprites[index];
+        spriteRenderer.sprite = iconSprites[index];
     }
 
     public int GetSpriteIndex()
@@ -52,65 +52,65 @@ public class Icon : MonoBehaviour
 
     public void UpgradeItem()
     {
-        isMerging = false;
+        IsMerging = false;
         spriteIndex++;
         SetIconSprite(spriteIndex);
     }
 
-    public void returnToOriginPos()
+    public void ReturnToOriginPos()
     {
-        transform.position = gridHandler.getPosition(GridIndex);
+        transform.position = gridHandler.GetPosition(gridIndex);
     }
 
     public void SnapToNearestCell()
     {
-        Vector2 CurrentPos = (Vector2)transform.position;
-        Vector2 NearestPos = CurrentPos;
-        Vector2Int NearestIndex = new Vector2Int();
+        Vector2 currentPos = (Vector2)transform.position;
+        Vector2 nearestPos = currentPos;
+        Vector2Int nearestIndex = new Vector2Int();
         float minValue = float.PositiveInfinity;
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 9; j++)
             {
-                Vector2 GridPos = gridHandler.getPosition(new Vector2Int(i, j));
-                float distance = Vector2.Distance(CurrentPos, GridPos);
+                Vector2 gridPos = gridHandler.GetPosition(new Vector2Int(i, j));
+                float distance = Vector2.Distance(currentPos, gridPos);
                 if (distance <= minValue)
                 {
-                    NearestPos = GridPos;
+                    nearestPos = gridPos;
                     minValue = distance;
-                    NearestIndex.x = i;
-                    NearestIndex.y = j;
+                    nearestIndex.x = i;
+                    nearestIndex.y = j;
                 }
             }
         }
 
-        SpriteRenderer.sortingOrder = 1;
-        if (NearestIndex == GridIndex)
+        spriteRenderer.sortingOrder = 1;
+        if (nearestIndex == gridIndex)
         {
-            returnToOriginPos();
+            ReturnToOriginPos();
         }
-        else if (!gridHandler.HasItem(NearestIndex))
+        else if (!gridHandler.HasItem(nearestIndex))
         {
-            gridHandler.ReleaseItem(GridIndex);
-            gridHandler.StoreItem(NearestIndex, gameObject);
-            GridIndex = NearestIndex;
-            transform.position = (Vector3)NearestPos;
+            gridHandler.ReleaseItem(gridIndex);
+            gridHandler.StoreItem(nearestIndex, gameObject);
+            gridIndex = nearestIndex;
+            transform.position = (Vector3)nearestPos;
         }
-        else if (gridHandler.getItem(NearestIndex).GetComponent<Icon>().GetSpriteIndex() != spriteIndex
-        || spriteIndex == 4 || gridHandler.getItem(NearestIndex).GetComponent<Icon>().isMerging == true)
+        else if (gridHandler.GetItem(nearestIndex).GetComponent<Icon>().GetSpriteIndex() != spriteIndex
+        || spriteIndex == 4 || gridHandler.GetItem(nearestIndex).GetComponent<Icon>().IsMerging == true)
         {
-            returnToOriginPos();
+            ReturnToOriginPos();
         }
         else
         {
-            gridHandler.ReleaseItem(GridIndex);
-            MergeManager.instance.MergeItem(gameObject, NearestIndex);
+            gridHandler.ReleaseItem(gridIndex);
+            MergeManager.Instance.MergeItem(gameObject, nearestIndex);
         }
 
     }
 
-    public void setVisible(bool visible)
+    public void SetVisible(bool visible)
     {
-        SpriteRenderer.enabled = visible;
+        spriteRenderer.enabled = visible;
     }
 }

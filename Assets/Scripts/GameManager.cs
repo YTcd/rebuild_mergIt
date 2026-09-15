@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
     [SerializeField]
-    private Camera MainCamera;
+    private Camera mainCamera;
     [SerializeField]
     private Sprite tileSprite;
     [SerializeField]
-    private GameObject Board;
+    private GameObject board;
     [SerializeField]
-    private PoolingManger PoolingManger;
+    private PoolingManger poolingManger;
 
     private const int GridSize = 9;
 
-    private float BoardSize;
+    private float boardSize;
     private int lastWidth, lastHeight;
 
     public float TileSpriteSize = 74f;
@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        instance = this;
-        BoardSize = TileSpriteSize * GridSize;
+        Instance = this;
+        boardSize = TileSpriteSize * GridSize;
         Fit();
         GenerateBoard();
     }
@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviour
         lastHeight = Screen.height;
 
         float aspect = (float)Screen.width / Screen.height;
-        MainCamera.orthographicSize = aspect >= 1f ? BoardSize / 2f
-            : BoardSize / (2f * aspect);
+        mainCamera.orthographicSize = aspect >= 1f ? boardSize / 2f
+            : boardSize / (2f * aspect);
     }
 
     private void GenerateBoard()
@@ -55,18 +55,18 @@ public class GameManager : MonoBehaviour
         float scale = TileSpriteSize / spriteWorldSize;
         float offset = (GridSize - 1) / 2f;
 
-        float halfBoardSize = BoardSize / 2f;
-        BoardBounds = new Rect(-halfBoardSize, -halfBoardSize, BoardSize, BoardSize);
+        float halfBoardSize = boardSize / 2f;
+        BoardBounds = new Rect(-halfBoardSize, -halfBoardSize, boardSize, boardSize);
 
         for (int x = 0; x < GridSize; x++)
         {
             for (int y = 0; y < GridSize; y++)
             {
                 Vector2 pos = new Vector2((x - offset) * TileSpriteSize, (y - offset) * TileSpriteSize);
-                GridHandler.instance.setPosition(x, y, pos);
+                GridHandler.Instance.SetPosition(x, y, pos);
 
                 GameObject tile = new GameObject($"Tile_{x}_{y}");
-                tile.transform.SetParent(Board.transform);
+                tile.transform.SetParent(board.transform);
                 tile.transform.position = pos;
                 tile.transform.localScale = new Vector3(scale, scale, 1f);
 

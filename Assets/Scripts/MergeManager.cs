@@ -3,21 +3,21 @@ using UnityEngine;
 
 public class MergeManager : MonoBehaviour
 {
-    public static MergeManager instance;
+    public static MergeManager Instance;
 
     void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        instance = this;
+        Instance = this;
     }
 
-    public void MergeItem(GameObject dragedItem, Vector2Int GridIndex)
+    public void MergeItem(GameObject dragedItem, Vector2Int gridIndex)
     {
-        GameObject storedItem = GridHandler.instance.getItem(GridIndex);
+        GameObject storedItem = GridHandler.Instance.GetItem(gridIndex);
         StartCoroutine(MergeItem(dragedItem, storedItem));
     }
 
@@ -39,15 +39,15 @@ public class MergeManager : MonoBehaviour
         dragedItem.transform.position = targetPos;
 
         Icon dragedIcon = dragedItem.GetComponent<Icon>();
-        PoolingManger.instance.returnItemToPool(dragedIcon);
+        PoolingManger.Instance.ReturnItemToPool(dragedIcon);
 
         Icon storedItemIcon = storedItem.GetComponent<Icon>();
-        storedItemIcon.isMerging = true;
-        storedItemIcon.setVisible(false);
-        FusionEffect effect = PoolingManger.instance.getFusionEffect();
+        storedItemIcon.IsMerging = true;
+        storedItemIcon.SetVisible(false);
+        FusionEffect effect = PoolingManger.Instance.GetFusionEffect();
         yield return StartCoroutine(effect.PlayAndWait(targetPos));
 
-        storedItemIcon.setVisible(true);
+        storedItemIcon.SetVisible(true);
         storedItemIcon.UpgradeItem();
     }
 }

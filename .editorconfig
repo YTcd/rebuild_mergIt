@@ -1,0 +1,190 @@
+root = true
+
+##########################################
+# 공통
+##########################################
+
+[*]
+indent_style = space
+indent_size = 4
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{json,yml,yaml,xml,csproj,props,targets}]
+indent_size = 2
+
+# Unity가 직접 생성/관리하는 YAML 에셋은 에디터가 건드리지 않도록
+[*.{unity,prefab,asset,meta,anim,controller,mat,physicsMaterial2D,inputactions}]
+trim_trailing_whitespace = false
+insert_final_newline = false
+indent_style = space
+indent_size = 2
+
+# 패키지 캐시 등 우리가 작성하지 않은 코드는 검사 제외
+[Library/**.cs]
+generated_code = true
+
+##########################################
+# C#
+##########################################
+
+[*.cs]
+
+# 네이밍 규칙 위반을 경고로 표시 (기본값은 무시)
+dotnet_diagnostic.IDE1006.severity = warning
+
+#-----------------------------------------
+# 네이밍 — 스타일 정의
+#-----------------------------------------
+
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+dotnet_naming_style.camel_case.capitalization = camel_case
+
+dotnet_naming_style.interface_prefix.capitalization = pascal_case
+dotnet_naming_style.interface_prefix.required_prefix = I
+
+dotnet_naming_style.type_parameter_prefix.capitalization = pascal_case
+dotnet_naming_style.type_parameter_prefix.required_prefix = T
+
+#-----------------------------------------
+# 네이밍 — 심볼 그룹 정의
+#-----------------------------------------
+
+dotnet_naming_symbols.interfaces.applicable_kinds = interface
+dotnet_naming_symbols.interfaces.applicable_accessibilities = *
+
+dotnet_naming_symbols.type_parameters.applicable_kinds = type_parameter
+dotnet_naming_symbols.type_parameters.applicable_accessibilities = *
+
+dotnet_naming_symbols.types.applicable_kinds = class, struct, enum, delegate
+dotnet_naming_symbols.types.applicable_accessibilities = *
+
+dotnet_naming_symbols.constants.applicable_kinds = field
+dotnet_naming_symbols.constants.applicable_accessibilities = *
+dotnet_naming_symbols.constants.required_modifiers = const
+
+dotnet_naming_symbols.static_readonly_fields.applicable_kinds = field
+dotnet_naming_symbols.static_readonly_fields.applicable_accessibilities = *
+dotnet_naming_symbols.static_readonly_fields.required_modifiers = static, readonly
+
+dotnet_naming_symbols.public_fields.applicable_kinds = field
+dotnet_naming_symbols.public_fields.applicable_accessibilities = public, internal
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private, protected, protected_internal, private_protected
+
+dotnet_naming_symbols.properties_and_events.applicable_kinds = property, event
+dotnet_naming_symbols.properties_and_events.applicable_accessibilities = *
+
+dotnet_naming_symbols.methods.applicable_kinds = method, local_function
+dotnet_naming_symbols.methods.applicable_accessibilities = *
+
+dotnet_naming_symbols.parameters_and_locals.applicable_kinds = parameter, local
+dotnet_naming_symbols.parameters_and_locals.applicable_accessibilities = *
+
+#-----------------------------------------
+# 네이밍 — 규칙 (위에서부터 먼저 매칭되는 것이 적용되므로
+#              구체적인 규칙을 위에 둡니다)
+#-----------------------------------------
+
+# interface IDragHandler
+dotnet_naming_rule.interfaces_pascal_with_i.symbols = interfaces
+dotnet_naming_rule.interfaces_pascal_with_i.style = interface_prefix
+dotnet_naming_rule.interfaces_pascal_with_i.severity = warning
+
+# Pool<TItem>
+dotnet_naming_rule.type_parameters_pascal_with_t.symbols = type_parameters
+dotnet_naming_rule.type_parameters_pascal_with_t.style = type_parameter_prefix
+dotnet_naming_rule.type_parameters_pascal_with_t.severity = warning
+
+# class Icon, struct IconInfo, enum MergeState
+dotnet_naming_rule.types_pascal.symbols = types
+dotnet_naming_rule.types_pascal.style = pascal_case
+dotnet_naming_rule.types_pascal.severity = warning
+
+# const int GridSize = 9;
+dotnet_naming_rule.constants_pascal.symbols = constants
+dotnet_naming_rule.constants_pascal.style = pascal_case
+dotnet_naming_rule.constants_pascal.severity = warning
+
+# static readonly Vector2Int Invalid = ...;
+dotnet_naming_rule.static_readonly_pascal.symbols = static_readonly_fields
+dotnet_naming_rule.static_readonly_pascal.style = pascal_case
+dotnet_naming_rule.static_readonly_pascal.severity = warning
+
+# public float TileSpriteSize;
+dotnet_naming_rule.public_fields_pascal.symbols = public_fields
+dotnet_naming_rule.public_fields_pascal.style = pascal_case
+dotnet_naming_rule.public_fields_pascal.severity = warning
+
+# public bool IsMerging { get; private set; }
+dotnet_naming_rule.properties_and_events_pascal.symbols = properties_and_events
+dotnet_naming_rule.properties_and_events_pascal.style = pascal_case
+dotnet_naming_rule.properties_and_events_pascal.severity = warning
+
+# private SpriteRenderer spriteRenderer;
+#   → 앞에 밑줄을 붙이는 팀 컨벤션을 쓰려면 아래 style을 camel_case 대신
+#     private_field_prefix 로 바꾸고, 주석 처리된 style 정의를 살리세요.
+# dotnet_naming_style.private_field_prefix.capitalization = camel_case
+# dotnet_naming_style.private_field_prefix.required_prefix = _
+dotnet_naming_rule.private_fields_camel.symbols = private_fields
+dotnet_naming_rule.private_fields_camel.style = camel_case
+dotnet_naming_rule.private_fields_camel.severity = warning
+
+# public void SnapToNearestCell() / private void Fit()
+#   접근 제어자와 무관하게 메서드는 전부 PascalCase 입니다.
+dotnet_naming_rule.methods_pascal.symbols = methods
+dotnet_naming_rule.methods_pascal.style = pascal_case
+dotnet_naming_rule.methods_pascal.severity = warning
+
+# void Init(Vector2Int gridIndex) { float scale = ...; }
+dotnet_naming_rule.parameters_and_locals_camel.symbols = parameters_and_locals
+dotnet_naming_rule.parameters_and_locals_camel.style = camel_case
+dotnet_naming_rule.parameters_and_locals_camel.severity = warning
+
+#-----------------------------------------
+# 코드 스타일 — 지금 코드베이스의 습관을 그대로 굳힙니다
+#-----------------------------------------
+
+# 타입을 명시적으로 쓰는 지금 스타일 유지 (var 대신 Vector3, Icon 등)
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent = false:suggestion
+csharp_style_var_elsewhere = false:suggestion
+
+# this.spriteRenderer 대신 spriteRenderer
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+dotnet_style_qualification_for_event = false:suggestion
+
+# int / bool 등은 Int32 / Boolean 대신 키워드로
+dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
+dotnet_style_predefined_type_for_member_access = true:suggestion
+
+# 여러 줄에 걸친 블록은 중괄호 필수, 한 줄짜리 `if (x) return;` 은 허용
+csharp_prefer_braces = when_multiline:suggestion
+
+# 중괄호는 다음 줄에 (Unity / Visual Studio 기본 스타일)
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+
+# using 정렬
+dotnet_sort_system_directives_first = true
+csharp_using_directive_placement = outside_namespace:suggestion
+
+# 사용하지 않는 private 멤버 / 값 알림
+#   주의: [SerializeField] private 필드는 Unity 엔진이 사용하지만
+#   분석기는 그 사실을 모릅니다. 오탐이 섞일 수 있어 suggestion 으로 둡니다.
+dotnet_diagnostic.IDE0051.severity = suggestion
+dotnet_diagnostic.IDE0052.severity = suggestion
+
+# 사용하지 않는 지역 변수 / 매개변수
+dotnet_diagnostic.IDE0059.severity = suggestion
+dotnet_diagnostic.IDE0060.severity = suggestion
+
+# 변경되지 않는 필드는 readonly 로
+dotnet_diagnostic.IDE0044.severity = suggestion

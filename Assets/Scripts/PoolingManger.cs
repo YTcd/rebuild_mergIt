@@ -2,113 +2,113 @@ using UnityEngine;
 
 public class PoolingManger : MonoBehaviour
 {
-    public static PoolingManger instance;
+    public static PoolingManger Instance;
 
     struct IconInfo
     {
-        public Icon icon;
-        public bool isUsing;
+        public Icon Icon;
+        public bool IsUsing;
     }
 
     struct FusionEffectInfo
     {
-        public FusionEffect effect;
-        public bool isUsing;
+        public FusionEffect Effect;
+        public bool IsUsing;
     }
 
     [SerializeField]
-    private Icon IconPrefab;
+    private Icon iconPrefab;
     [SerializeField]
-    private FusionEffect FusionEffect;
+    private FusionEffect fusionEffect;
 
-    IconInfo[] IconInfos = new IconInfo[9 * 9 + 1];
-    FusionEffectInfo[] Effects = new FusionEffectInfo[10];
+    private IconInfo[] iconInfos = new IconInfo[9 * 9 + 1];
+    private FusionEffectInfo[] effects = new FusionEffectInfo[10];
 
     void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        instance = this;
+        Instance = this;
     }
 
     public Icon GetItem()
     {
         int firstEmptySlot = -1;
-        for (int i = 0; i < IconInfos.Length; i++)
+        for (int i = 0; i < iconInfos.Length; i++)
         {
-            if (IconInfos[i].icon == null)
+            if (iconInfos[i].Icon == null)
             {
                 if (firstEmptySlot == -1)
                     firstEmptySlot = i;
                 continue;
             }
 
-            if (!IconInfos[i].isUsing)
+            if (!iconInfos[i].IsUsing)
             {
-                IconInfos[i].isUsing = true;
-                IconInfos[i].icon.gameObject.SetActive(true);
-                return IconInfos[i].icon;
+                iconInfos[i].IsUsing = true;
+                iconInfos[i].Icon.gameObject.SetActive(true);
+                return iconInfos[i].Icon;
             }
         }
 
-        Icon GeneratedItem = Instantiate(IconPrefab, Vector3.zero, Quaternion.identity);
-        IconInfos[firstEmptySlot].icon = GeneratedItem;
-        IconInfos[firstEmptySlot].isUsing = true;
-        GeneratedItem.gameObject.SetActive(true);
-        return GeneratedItem;
+        Icon generatedItem = Instantiate(iconPrefab, Vector3.zero, Quaternion.identity);
+        iconInfos[firstEmptySlot].Icon = generatedItem;
+        iconInfos[firstEmptySlot].IsUsing = true;
+        generatedItem.gameObject.SetActive(true);
+        return generatedItem;
     }
 
-    public void returnItemToPool(Icon icon)
+    public void ReturnItemToPool(Icon icon)
     {
-        for (int i = 0; i < IconInfos.Length; i++)
+        for (int i = 0; i < iconInfos.Length; i++)
         {
-            if (IconInfos[i].icon == icon)
+            if (iconInfos[i].Icon == icon)
             {
-                IconInfos[i].isUsing = false;
-                IconInfos[i].icon.gameObject.SetActive(false);
+                iconInfos[i].IsUsing = false;
+                iconInfos[i].Icon.gameObject.SetActive(false);
                 return;
             }
         }
     }
 
-    public FusionEffect getFusionEffect()
+    public FusionEffect GetFusionEffect()
     {
         int firstEmptySlot = -1;
-        for (int i = 0; i < Effects.Length; i++)
+        for (int i = 0; i < effects.Length; i++)
         {
-            if (Effects[i].effect == null)
+            if (effects[i].Effect == null)
             {
                 if (firstEmptySlot == -1)
                     firstEmptySlot = i;
                 continue;
             }
 
-            if (!Effects[i].isUsing)
+            if (!effects[i].IsUsing)
             {
-                Effects[i].isUsing = true;
-                Effects[i].effect.gameObject.SetActive(true);
-                return Effects[i].effect;
+                effects[i].IsUsing = true;
+                effects[i].Effect.gameObject.SetActive(true);
+                return effects[i].Effect;
             }
         }
 
-        FusionEffect GeneratedItem = Instantiate(FusionEffect, Vector3.zero, Quaternion.identity);
-        GeneratedItem.gameObject.SetActive(true);
-        Effects[firstEmptySlot].effect = GeneratedItem;
-        Effects[firstEmptySlot].isUsing = true;
-        return GeneratedItem;
+        FusionEffect generatedItem = Instantiate(fusionEffect, Vector3.zero, Quaternion.identity);
+        generatedItem.gameObject.SetActive(true);
+        effects[firstEmptySlot].Effect = generatedItem;
+        effects[firstEmptySlot].IsUsing = true;
+        return generatedItem;
     }
 
-    public void returnEffectToPool(FusionEffect effect)
+    public void ReturnEffectToPool(FusionEffect effect)
     {
-        for (int i = 0; i < Effects.Length; i++)
+        for (int i = 0; i < effects.Length; i++)
         {
-            if (Effects[i].effect == effect)
+            if (effects[i].Effect == effect)
             {
-                Effects[i].isUsing = false;
-                Effects[i].effect.gameObject.SetActive(false);
+                effects[i].IsUsing = false;
+                effects[i].Effect.gameObject.SetActive(false);
                 return;
             }
         }

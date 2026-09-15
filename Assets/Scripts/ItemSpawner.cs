@@ -3,19 +3,19 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject IconContainer;
+    private GameObject iconContainer;
     [SerializeField]
-    private PoolingManger PoolingManager;
+    private PoolingManger poolingManager;
 
     public void GenerateIcon()
     {
-        Vector2Int ValidPos = GetEmptyGrid();
-        if (ValidPos.x == -1) return;
-        Icon item = PoolingManager.GetItem();
-        item.gameObject.transform.parent = IconContainer.transform;
-        GridHandler.instance.StoreItem(ValidPos, item.gameObject);
+        Vector2Int validPos = GetEmptyGrid();
+        if (validPos.x == -1) return;
+        Icon item = poolingManager.GetItem();
+        item.gameObject.transform.parent = iconContainer.transform;
+        GridHandler.Instance.StoreItem(validPos, item.gameObject);
         Icon icon = item.GetComponent<Icon>();
-        icon.Init(ValidPos);
+        icon.Init(validPos);
     }
 
     private Vector2Int GetEmptyGrid()
@@ -25,7 +25,7 @@ public class ItemSpawner : MonoBehaviour
             for (int j = 0; j < 9; j++)
             {
                 Vector2Int newIndex = new Vector2Int(i, j);
-                if (GridHandler.instance.HasItem(newIndex) == false)
+                if (GridHandler.Instance.HasItem(newIndex) == false)
                 {
                     return new Vector2Int(i, j);
                 }

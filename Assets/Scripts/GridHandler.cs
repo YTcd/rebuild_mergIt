@@ -2,64 +2,64 @@ using UnityEngine;
 
 public class GridHandler : MonoBehaviour
 {
-    public static GridHandler instance;
+    public static GridHandler Instance;
 
-    private GameObject[,] Cells = new GameObject[9, 9];
-    private Vector2[,] GridPositions;
+    private GameObject[,] cells = new GameObject[9, 9];
+    private Vector2[,] gridPositions;
 
     void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        instance = this;
-        GridPositions = new Vector2[9, 9];
+        Instance = this;
+        gridPositions = new Vector2[9, 9];
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 9; j++)
             {
-                Cells[i, j] = null;
+                cells[i, j] = null;
             }
         }
     }
 
-    public void setPosition(int x, int y, Vector2 pos)
+    public void SetPosition(int x, int y, Vector2 pos)
     {
-        GridPositions[x, y] = pos;
+        gridPositions[x, y] = pos;
     }
 
-    public Vector2 getPosition(Vector2Int GridIndex)
+    public Vector2 GetPosition(Vector2Int gridIndex)
     {
-        return GridPositions[GridIndex.x, GridIndex.y];
+        return gridPositions[gridIndex.x, gridIndex.y];
     }
 
-    public void StoreItem(Vector2Int GridIndex, GameObject gameObject)
+    public void StoreItem(Vector2Int gridIndex, GameObject item)
     {
-        if (!IsValidIndex(GridIndex)) return;
-        Cells[GridIndex.x, GridIndex.y] = gameObject;
+        if (!IsValidIndex(gridIndex)) return;
+        cells[gridIndex.x, gridIndex.y] = item;
     }
 
-    public void ReleaseItem(Vector2Int GridIndex)
+    public void ReleaseItem(Vector2Int gridIndex)
     {
-        if (!IsValidIndex(GridIndex)) return;
-        Cells[GridIndex.x, GridIndex.y] = null;
+        if (!IsValidIndex(gridIndex)) return;
+        cells[gridIndex.x, gridIndex.y] = null;
     }
 
-    public bool HasItem(Vector2Int GridIndex)
+    public bool HasItem(Vector2Int gridIndex)
     {
-        if (!IsValidIndex(GridIndex)) return false;
-        return Cells[GridIndex.x, GridIndex.y] != null;
+        if (!IsValidIndex(gridIndex)) return false;
+        return cells[gridIndex.x, gridIndex.y] != null;
     }
 
-    public GameObject getItem(Vector2Int GridIndex)
+    public GameObject GetItem(Vector2Int gridIndex)
     {
-        return Cells[GridIndex.x, GridIndex.y];
+        return cells[gridIndex.x, gridIndex.y];
     }
 
-    private bool IsValidIndex(Vector2Int GridIndex)
+    private bool IsValidIndex(Vector2Int gridIndex)
     {
-        return GridIndex.x >= 0 && GridIndex.x < 9 && GridIndex.y >= 0 && GridIndex.y < 9;
+        return gridIndex.x >= 0 && gridIndex.x < 9 && gridIndex.y >= 0 && gridIndex.y < 9;
     }
 }

@@ -10,9 +10,9 @@ public class Drager : MonoBehaviour
     private Vector2 inputVec;
     private Vector3 worldPos;
     private float cameraDepth;
-    private Camera MainCamera;
+    private Camera mainCamera;
     private SpriteRenderer spriteRenderer;
-    private Icon MainScript;
+    private Icon iconScript;
 
     [SerializeField]
     bool isClicked;
@@ -24,15 +24,15 @@ public class Drager : MonoBehaviour
 
     void Awake()
     {
-        MainScript = gameObject.GetComponent<Icon>();
-        MainCamera = Camera.main;
+        iconScript = gameObject.GetComponent<Icon>();
+        mainCamera = Camera.main;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     void OnEnable()
     {
         isClicked = false;
-        cameraDepth = Mathf.Abs(MainCamera.transform.position.z);
+        cameraDepth = Mathf.Abs(mainCamera.transform.position.z);
 
         mouseEvent = InputSystem.actions.FindAction("Point");
         clickAction = InputSystem.actions.FindAction("Click");
@@ -51,7 +51,7 @@ public class Drager : MonoBehaviour
         if (isClicked == true)
         {
             inputVec = mouseEvent.ReadValue<Vector2>();
-            worldPos = MainCamera.ScreenToWorldPoint(new Vector3(inputVec.x, inputVec.y, cameraDepth));
+            worldPos = mainCamera.ScreenToWorldPoint(new Vector3(inputVec.x, inputVec.y, cameraDepth));
         }
     }
 
@@ -59,14 +59,14 @@ public class Drager : MonoBehaviour
     {
         if (isClicked == true)
         {
-            Vector3 ClampedPos = ClampIconPos(worldPos);
-            transform.position = ClampedPos;
+            Vector3 clampedPos = ClampIconPos(worldPos);
+            transform.position = clampedPos;
         }
     }
 
     private Vector3 ClampIconPos(Vector3 worldPos)
     {
-        Rect bounds = GameManager.instance.BoardBounds;
+        Rect bounds = GameManager.Instance.BoardBounds;
 
         float clampedX = Mathf.Clamp(worldPos.x, bounds.xMin, bounds.xMax);
         float clampedY = Mathf.Clamp(worldPos.y, bounds.yMin, bounds.yMax);
@@ -76,10 +76,10 @@ public class Drager : MonoBehaviour
 
     private void OnDragStart(InputAction.CallbackContext ctx)
     {
-        if (MainScript.isMerging == true) return;
+        if (iconScript.IsMerging == true) return;
 
         Vector2 pos = mouseEvent.ReadValue<Vector2>();
-        Vector3 world = MainCamera.ScreenToWorldPoint(new Vector3(pos.x, pos.y, cameraDepth));
+        Vector3 world = mainCamera.ScreenToWorldPoint(new Vector3(pos.x, pos.y, cameraDepth));
 
         Collider2D hit = Physics2D.OverlapPoint(world);
         if (hit == null || hit.gameObject != gameObject) return;
@@ -96,7 +96,7 @@ public class Drager : MonoBehaviour
         {
             isClicked = false;
             transform.localScale = originScale;
-            MainScript.SnapToNearestCell();
+            iconScript.SnapToNearestCell();
         }
     }
 }
