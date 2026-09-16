@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0367566ef372e24fa6448a3832b9068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemSpawner
-  IconContainer: {fileID: 866091454}
-  PoolingManager: {fileID: 1272742239}
+  iconContainer: {fileID: 0}
+  poolingManager: {fileID: 0}
 --- !u!4 &326264741
 Transform:
   m_ObjectHideFlags: 0
@@ -565,8 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc428030cf63994f8c255506b93ad5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPool
-  IconPrefab: {fileID: 8962540437689299148, guid: 5ec3d2fcac341bd4f94b6064d5c5819d, type: 3}
-  FusionEffect: {fileID: 1767801058244850287, guid: 59a36cb3d45fa1d4ebe58c90f31938b6, type: 3}
+  iconPrefab: {fileID: 0}
+  fusionEffect: {fileID: 0}
 --- !u!4 &1272742240
 Transform:
   m_ObjectHideFlags: 0
@@ -576,7 +576,7 @@ Transform:
   m_GameObject: {fileID: 1272742238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -127.75915, y: -152.1563, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -867,10 +867,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddbae763160caa4abb2078547e316aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  MainCamera: {fileID: 519420034}
+  mainCamera: {fileID: 0}
   tileSprite: {fileID: 1102526082827792319, guid: 69a7dd20c71a8dd47ba887df23cd00fd, type: 3}
-  Board: {fileID: 154805410}
-  PoolingManger: {fileID: 0}
+  board: {fileID: 0}
+  poolingManger: {fileID: 0}
   TileSpriteSize: 74
   BoardBounds:
     serializedVersion: 2

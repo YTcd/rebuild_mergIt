@@ -24,6 +24,6 @@ public class FusionEffect : MonoBehaviour
         float length = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(length);
 
-        PoolingManger.Instance.ReturnEffectToPool(this);
+        PoolingManger.Instance.EffectPool.Release(this);
     }
 }

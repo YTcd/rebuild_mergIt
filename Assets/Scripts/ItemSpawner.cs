@@ -11,7 +11,7 @@ public class ItemSpawner : MonoBehaviour
     {
         Vector2Int validPos = GetEmptyGrid();
         if (validPos.x == -1) return;
-        Icon item = poolingManager.GetItem();
+        Icon item = poolingManager.ItemPool.Get();
         item.gameObject.transform.parent = iconContainer.transform;
         GridHandler.Instance.StoreItem(validPos, item.gameObject);
         Icon icon = item.GetComponent<Icon>();

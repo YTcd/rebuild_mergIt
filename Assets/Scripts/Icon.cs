@@ -104,6 +104,7 @@ public class Icon : MonoBehaviour
         else
         {
             gridHandler.ReleaseItem(gridIndex);
+            gridIndex = new Vector2Int(-1, -1);
             MergeManager.Instance.MergeItem(gameObject, nearestIndex);
         }
 
