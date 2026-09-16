@@ -9,7 +9,7 @@ public class FusionEffect : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.sortingOrder = 5;
+        sr.sortingOrder = 2;
         float spriteWorldSize = sr.sprite.bounds.size.x;
         float scale = GameManager.Instance.TileSpriteSize / spriteWorldSize;
         transform.localScale = new Vector3(scale, scale, 1f);

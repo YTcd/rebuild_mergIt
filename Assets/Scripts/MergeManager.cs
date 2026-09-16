@@ -25,6 +25,9 @@ public class MergeManager : MonoBehaviour
     {
         const float duration = 0.2f;
 
+        Icon storedItemIcon = storedItem.GetComponent<Icon>();
+        storedItemIcon.IsMerging = true;
+
         Vector3 startPos = dragedItem.transform.position;
         Vector3 targetPos = storedItem.transform.position;
 
@@ -41,8 +44,6 @@ public class MergeManager : MonoBehaviour
         Icon dragedIcon = dragedItem.GetComponent<Icon>();
         PoolingManger.Instance.ItemPool.Release(dragedIcon);
 
-        Icon storedItemIcon = storedItem.GetComponent<Icon>();
-        storedItemIcon.IsMerging = true;
         storedItemIcon.SetVisible(false);
         FusionEffect effect = PoolingManger.Instance.EffectPool.Get();
         yield return StartCoroutine(effect.PlayAndWait(targetPos));

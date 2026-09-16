@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0367566ef372e24fa6448a3832b9068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemSpawner
-  iconContainer: {fileID: 0}
-  poolingManager: {fileID: 0}
+  iconContainer: {fileID: 866091454}
+  poolingManager: {fileID: 1272742239}
 --- !u!4 &326264741
 Transform:
   m_ObjectHideFlags: 0
@@ -565,8 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc428030cf63994f8c255506b93ad5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPool
-  iconPrefab: {fileID: 0}
-  fusionEffect: {fileID: 0}
+  iconPrefab: {fileID: 8962540437689299148, guid: 5ec3d2fcac341bd4f94b6064d5c5819d, type: 3}
+  fusionEffect: {fileID: 1767801058244850287, guid: 59a36cb3d45fa1d4ebe58c90f31938b6, type: 3}
 --- !u!4 &1272742240
 Transform:
   m_ObjectHideFlags: 0
@@ -867,10 +867,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddbae763160caa4abb2078547e316aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 519420034}
   tileSprite: {fileID: 1102526082827792319, guid: 69a7dd20c71a8dd47ba887df23cd00fd, type: 3}
-  board: {fileID: 0}
-  poolingManger: {fileID: 0}
+  board: {fileID: 154805410}
+  poolingManger: {fileID: 1272742239}
   TileSpriteSize: 74
   BoardBounds:
     serializedVersion: 2
@@ -986,6 +986,68 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &2111078599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111078600}
+  - component: {fileID: 2111078601}
+  m_Layer: 0
+  m_Name: DragerInputHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2111078600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111078599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.77232, y: 13.69709, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2111078601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111078599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3a4c862e52d4c4297db61e5861c462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DragerInputHandler
+  mouseEvent:
+    m_Name: Mouse Event
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8d21c002-c93b-449e-96ab-880f504c0d58
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  clickAction:
+    m_Name: Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2fea81c2-a073-4a44-a794-4ba0b035184a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1001,3 +1063,4 @@ SceneRoots:
   - {fileID: 1621572023}
   - {fileID: 1627934031}
   - {fileID: 1272742240}
+  - {fileID: 2111078600}

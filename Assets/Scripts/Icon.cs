@@ -13,7 +13,7 @@ public class Icon : MonoBehaviour
 
     void Awake()
     {
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         gridHandler = GridHandler.Instance;
     }
 
@@ -25,6 +25,8 @@ public class Icon : MonoBehaviour
     public void Init(Vector2Int position)
     {
         gridIndex = position;
+        IsMerging = false;
+        SetVisible(true);
         SetIconSprite(0);
 
         Vector2 coodPos = gridHandler.GetPosition(position);
@@ -105,6 +107,7 @@ public class Icon : MonoBehaviour
         {
             gridHandler.ReleaseItem(gridIndex);
             gridIndex = new Vector2Int(-1, -1);
+            IsMerging = true;
             MergeManager.Instance.MergeItem(gameObject, nearestIndex);
         }
 
