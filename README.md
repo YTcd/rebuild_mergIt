@@ -1,5 +1,4 @@
 - 생성 버튼 제대로 만들기
-- 현재까지의 누적 점수를 표기해주는 UI 생성
 - 오토머징
 
 - camera orthographicSize

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private GameObject board;
     [SerializeField]
     private PoolingManger poolingManger;
+    [SerializeField]
+    public UIHandler UIHandler;
 
     private const int GridSize = 9;
 

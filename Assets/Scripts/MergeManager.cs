@@ -48,6 +48,7 @@ public class MergeManager : MonoBehaviour
         FusionEffect effect = PoolingManger.Instance.EffectPool.Get();
         yield return StartCoroutine(effect.PlayAndWait(targetPos));
 
+        GameManager.Instance.UIHandler.AddScore(storedItemIcon.GetSpriteIndex() + 1);
         storedItemIcon.SetVisible(true);
         storedItemIcon.UpgradeItem();
     }
