@@ -1067,7 +1067,7 @@ MonoBehaviour:
   tileSprite: {fileID: 1102526082827792319, guid: 69a7dd20c71a8dd47ba887df23cd00fd, type: 3}
   board: {fileID: 154805410}
   poolingManger: {fileID: 1272742239}
-  uiHandler: {fileID: 0}
+  UIHandler: {fileID: 334825232}
   TileSpriteSize: 74
   BoardBounds:
     serializedVersion: 2

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public UIHandler UIHandler;
 
-    private const int GridSize = 9;
+    public const int GridSize = 9;
 
     private float boardSize;
     private int lastWidth, lastHeight;

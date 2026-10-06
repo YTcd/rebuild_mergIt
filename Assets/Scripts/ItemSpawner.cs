@@ -6,6 +6,12 @@ public class ItemSpawner : MonoBehaviour
     private GameObject iconContainer;
     [SerializeField]
     private PoolingManger poolingManager;
+    private Vector2Int[] emptyArray;
+
+    void Awake()
+    {
+        emptyArray = new Vector2Int[GameManager.GridSize * GameManager.GridSize];
+    }
 
     public void GenerateIcon()
     {
@@ -14,24 +20,28 @@ public class ItemSpawner : MonoBehaviour
         Icon item = poolingManager.ItemPool.Get();
         item.gameObject.transform.parent = iconContainer.transform;
         GridHandler.Instance.StoreItem(validPos, item.gameObject);
-        Icon icon = item.GetComponent<Icon>();
-        icon.Init(validPos);
+        item.Init(validPos);
     }
 
     private Vector2Int GetEmptyGrid()
     {
-        for (int i = 0; i < 9; i++)
+        int emptyCellsCount = 0;
+        for (int i = 0; i < GameManager.GridSize; i++)
         {
-            for (int j = 0; j < 9; j++)
+            for (int j = 0; j < GameManager.GridSize; j++)
             {
                 Vector2Int newIndex = new Vector2Int(i, j);
                 if (GridHandler.Instance.HasItem(newIndex) == false)
                 {
-                    return new Vector2Int(i, j);
+                    emptyArray[emptyCellsCount] = newIndex;
+                    emptyCellsCount++;
                 }
             }
         }
 
-        return new Vector2Int(-1, -1);
+        if (emptyCellsCount == 0) return new Vector2Int(-1, -1);
+
+        int randomIndex = Random.Range(0, emptyCellsCount);
+        return emptyArray[randomIndex];
     }
 }

@@ -4,9 +4,8 @@ public class GridHandler : MonoBehaviour
 {
     public static GridHandler Instance;
 
-    private GameObject[,] cells = new GameObject[9, 9];
+    private GameObject[,] cells = new GameObject[GameManager.GridSize, GameManager.GridSize];
     private Vector2[,] gridPositions;
-
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -15,14 +14,7 @@ public class GridHandler : MonoBehaviour
             return;
         }
         Instance = this;
-        gridPositions = new Vector2[9, 9];
-        for (int i = 0; i < 9; i++)
-        {
-            for (int j = 0; j < 9; j++)
-            {
-                cells[i, j] = null;
-            }
-        }
+        gridPositions = new Vector2[GameManager.GridSize, GameManager.GridSize];
     }
 
     public void SetPosition(int x, int y, Vector2 pos)
@@ -60,6 +52,6 @@ public class GridHandler : MonoBehaviour
 
     private bool IsValidIndex(Vector2Int gridIndex)
     {
-        return gridIndex.x >= 0 && gridIndex.x < 9 && gridIndex.y >= 0 && gridIndex.y < 9;
+        return gridIndex.x >= 0 && gridIndex.x < GameManager.GridSize && gridIndex.y >= 0 && gridIndex.y < GameManager.GridSize;
     }
 }

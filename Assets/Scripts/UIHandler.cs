@@ -9,12 +9,12 @@ public class UIHandler : MonoBehaviour
 
     void Awake()
     {
-        score.SetText("Score : 00");
+        score.SetText("Score : 0");
     }
 
     public void AddScore(int num)
     {
-        if (num == current) return;
+        if (num == 0) return;
 
         current += num;
         score.SetText("Score : {0}", current);
