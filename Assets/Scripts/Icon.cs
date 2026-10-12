@@ -52,6 +52,11 @@ public class Icon : MonoBehaviour
         return spriteIndex;
     }
 
+    public int GetScore()
+    {
+        return 1 << spriteIndex;
+    }
+
     public void UpgradeItem()
     {
         IsMerging = false;

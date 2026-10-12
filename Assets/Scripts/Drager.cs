@@ -35,4 +35,12 @@ public class Drager : MonoBehaviour
         transform.localScale = originScale;
         iconScript.SnapToNearestCell();
     }
+
+    public void OnDoubleClicked()
+    {
+        if (iconScript.GetSpriteIndex() != 4) return;
+
+        GameManager.Instance.UIHandler.AddScore(iconScript.GetScore());
+        PoolingManger.Instance.ItemPool.Release(iconScript);
+    }
 }

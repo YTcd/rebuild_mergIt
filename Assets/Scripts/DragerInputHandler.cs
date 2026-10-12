@@ -12,6 +12,16 @@ public class DragerInputHandler : MonoBehaviour
     private Camera mainCamera;
     private Vector2 inputVec;
 
+
+    private const float TapMaxDuration = 0.25f;
+    private const float TapMaxDistance = 0.2f;
+    private const float DoubleClickInterval = 0.3f;
+
+    private float pressTime;
+    private Vector3 pressWorldPos;
+    private float lastClickTime = -1f;
+    private Drager lastClickedItem;
+
     void Awake()
     {
         mainCamera = Camera.main;
@@ -55,12 +65,37 @@ public class DragerInputHandler : MonoBehaviour
 
         draggingItem = drager;
         draggingItem.OnDragStart();
+
+        pressTime = Time.time;
+        pressWorldPos = worldPos;
     }
 
     private void OnDragEnd(InputAction.CallbackContext ctx)
     {
         if (draggingItem == null) return;
+
+        bool isTap = Time.time - pressTime <= TapMaxDuration && Vector3.Distance(draggingItem.transform.position, pressWorldPos) <= TapMaxDistance;
+
         draggingItem.OnDragEnd();
+
+        if (isTap)
+        {
+            if (draggingItem == lastClickedItem && Time.time - lastClickTime <= DoubleClickInterval)
+            {
+                draggingItem.OnDoubleClicked();
+                lastClickedItem = null;
+            }
+            else
+            {
+                lastClickedItem = draggingItem;
+                lastClickTime = Time.time;
+            }
+        }
+        else
+        {
+            lastClickedItem = null;
+        }
+
         draggingItem = null;
     }
 
