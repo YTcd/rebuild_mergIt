@@ -1,14 +1,11 @@
 using UnityEngine;
 
-public class Drager : MonoBehaviour
+public class Dragger : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private Icon iconScript;
 
-    [SerializeField]
-    Vector3 originScale;
-    [SerializeField]
-    Vector3 clickedScale;
+    private Vector3 originScale;
 
     public bool CanDrag => !iconScript.IsMerging;
 
@@ -18,7 +15,7 @@ public class Drager : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void OnDraged(Vector3 clampedPos)
+    public void OnDragged(Vector3 clampedPos)
     {
         transform.position = clampedPos;
     }
@@ -40,7 +37,7 @@ public class Drager : MonoBehaviour
     {
         if (iconScript.GetSpriteIndex() != 4) return;
 
-        GameManager.Instance.UIHandler.AddScore(iconScript.GetScore());
-        PoolingManger.Instance.ItemPool.Release(iconScript);
+        GameManager.Instance.UiHandler.AddScore(iconScript.GetScore());
+        PoolingManager.Instance.ItemPool.Release(iconScript);
     }
 }

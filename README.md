@@ -1,6 +1,5 @@
 - 생성 버튼 제대로 만들기
 - 오토머징
-- 최대 레벨 더블클릭 판매 로직
 
 - camera orthographicSize
 - array 2차원 배열과 Jagged 배열
@@ -8,3 +7,4 @@
 - UnityEngine.Pool.ObjectPool<T>
 - TryGetComponent
 - Unity lazy singleton
+- destroyCancellationToken

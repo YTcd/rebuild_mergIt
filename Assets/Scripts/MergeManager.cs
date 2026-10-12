@@ -28,40 +28,40 @@ public class MergeManager : MonoBehaviour
         instance = this;
     }
 
-    public void MergeItem(GameObject dragedItem, Vector2Int gridIndex)
+    public void MergeItem(GameObject draggedItem, Vector2Int gridIndex)
     {
         GameObject storedItem = GridHandler.Instance.GetItem(gridIndex);
-        StartCoroutine(MergeItem(dragedItem, storedItem));
+        StartCoroutine(DirectMerging(draggedItem, storedItem));
     }
 
-    private IEnumerator MergeItem(GameObject dragedItem, GameObject storedItem)
+    private IEnumerator DirectMerging(GameObject draggedItem, GameObject storedItem)
     {
         const float duration = 0.2f;
 
         Icon storedItemIcon = storedItem.GetComponent<Icon>();
         storedItemIcon.IsMerging = true;
 
-        Vector3 startPos = dragedItem.transform.position;
+        Vector3 startPos = draggedItem.transform.position;
         Vector3 targetPos = storedItem.transform.position;
 
         float elapsed = 0f;
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            dragedItem.transform.position = Vector3.Lerp(startPos, targetPos, elapsed / duration);
+            draggedItem.transform.position = Vector3.Lerp(startPos, targetPos, elapsed / duration);
             yield return null;
         }
 
-        dragedItem.transform.position = targetPos;
+        draggedItem.transform.position = targetPos;
 
-        Icon dragedIcon = dragedItem.GetComponent<Icon>();
-        PoolingManger.Instance.ItemPool.Release(dragedIcon);
+        Icon draggedIcon = draggedItem.GetComponent<Icon>();
+        PoolingManager.Instance.ItemPool.Release(draggedIcon);
 
         storedItemIcon.SetVisible(false);
-        FusionEffect effect = PoolingManger.Instance.EffectPool.Get();
+        FusionEffect effect = PoolingManager.Instance.EffectPool.Get();
         yield return StartCoroutine(effect.PlayAndWait(targetPos));
 
-        GameManager.Instance.UIHandler.AddScore(storedItemIcon.GetScore());
+        GameManager.Instance.UiHandler.AddScore(storedItemIcon.GetScore());
         storedItemIcon.SetVisible(true);
         storedItemIcon.UpgradeItem();
     }

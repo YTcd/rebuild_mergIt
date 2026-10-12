@@ -1,17 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DragerInputHandler : MonoBehaviour
+public class DraggerInputHandler : MonoBehaviour
 {
-    [SerializeField]
     private InputAction mouseEvent;
-    [SerializeField]
     private InputAction clickAction;
     private float cameraDepth;
-    private Drager draggingItem;
+    private Dragger draggingItem;
     private Camera mainCamera;
-    private Vector2 inputVec;
-
 
     private const float TapMaxDuration = 0.25f;
     private const float TapMaxDistance = 0.2f;
@@ -20,7 +16,7 @@ public class DragerInputHandler : MonoBehaviour
     private float pressTime;
     private Vector3 pressWorldPos;
     private float lastClickTime = -1f;
-    private Drager lastClickedItem;
+    private Dragger lastClickedItem;
 
     void Awake()
     {
@@ -41,10 +37,10 @@ public class DragerInputHandler : MonoBehaviour
     {
         if (draggingItem == null) return;
 
-        inputVec = mouseEvent.ReadValue<Vector2>();
+        Vector3 inputVec = mouseEvent.ReadValue<Vector2>();
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(inputVec.x, inputVec.y, cameraDepth));
         Vector3 clampedPos = ClampIconPos(worldPos);
-        draggingItem.OnDraged(clampedPos);
+        draggingItem.OnDragged(clampedPos);
     }
 
     void OnDisable()
@@ -61,9 +57,9 @@ public class DragerInputHandler : MonoBehaviour
         Collider2D hit = Physics2D.OverlapPoint(worldPos);
         if (hit == null) return;
 
-        if (!hit.TryGetComponent(out Drager drager) || !drager.CanDrag) return;
+        if (!hit.TryGetComponent(out Dragger dragger) || !dragger.CanDrag) return;
 
-        draggingItem = drager;
+        draggingItem = dragger;
         draggingItem.OnDragStart();
 
         pressTime = Time.time;

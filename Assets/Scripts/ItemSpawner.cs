@@ -5,12 +5,12 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField]
     private GameObject iconContainer;
     [SerializeField]
-    private PoolingManger poolingManager;
-    private Vector2Int[] emptyArray;
+    private PoolingManager poolingManager;
+    private Vector2Int[] emptyCells;
 
     void Awake()
     {
-        emptyArray = new Vector2Int[GameManager.GridSize * GameManager.GridSize];
+        emptyCells = new Vector2Int[GameManager.GridSize * GameManager.GridSize];
     }
 
     public void GenerateIcon()
@@ -18,7 +18,7 @@ public class ItemSpawner : MonoBehaviour
         Vector2Int validPos = GetEmptyGrid();
         if (validPos.x == -1) return;
         Icon item = poolingManager.ItemPool.Get();
-        item.gameObject.transform.parent = iconContainer.transform;
+        item.transform.SetParent(iconContainer.transform);
         GridHandler.Instance.StoreItem(validPos, item.gameObject);
         item.Init(validPos);
     }
@@ -33,7 +33,7 @@ public class ItemSpawner : MonoBehaviour
                 Vector2Int newIndex = new Vector2Int(i, j);
                 if (GridHandler.Instance.HasItem(newIndex) == false)
                 {
-                    emptyArray[emptyCellsCount] = newIndex;
+                    emptyCells[emptyCellsCount] = newIndex;
                     emptyCellsCount++;
                 }
             }
@@ -42,6 +42,6 @@ public class ItemSpawner : MonoBehaviour
         if (emptyCellsCount == 0) return new Vector2Int(-1, -1);
 
         int randomIndex = Random.Range(0, emptyCellsCount);
-        return emptyArray[randomIndex];
+        return emptyCells[randomIndex];
     }
 }

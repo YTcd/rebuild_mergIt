@@ -22,10 +22,7 @@ public class GameManager : MonoBehaviour
     private Sprite tileSprite;
     [SerializeField]
     private GameObject board;
-    [SerializeField]
-    private PoolingManger poolingManger;
-    [SerializeField]
-    public UIHandler UIHandler;
+    public UIHandler UiHandler;
 
     public const int GridSize = 9;
 

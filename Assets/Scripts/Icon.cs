@@ -75,9 +75,9 @@ public class Icon : MonoBehaviour
         Vector2 nearestPos = currentPos;
         Vector2Int nearestIndex = new Vector2Int();
         float minValue = float.PositiveInfinity;
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < GameManager.GridSize; i++)
         {
-            for (int j = 0; j < 9; j++)
+            for (int j = 0; j < GameManager.GridSize; j++)
             {
                 Vector2 gridPos = gridHandler.GetPosition(new Vector2Int(i, j));
                 float distance = Vector2.Distance(currentPos, gridPos);

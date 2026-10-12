@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class PoolingManger : MonoBehaviour
+public class PoolingManager : MonoBehaviour
 {
-    private static PoolingManger instance;
-    public static PoolingManger Instance
+    private static PoolingManager instance;
+    public static PoolingManager Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = FindFirstObjectByType<PoolingManger>();
+                instance = FindFirstObjectByType<PoolingManager>();
                 if (instance == null)
-                    instance = new GameObject(nameof(PoolingManger)).AddComponent<PoolingManger>();
+                    instance = new GameObject(nameof(PoolingManager)).AddComponent<PoolingManager>();
             }
             return instance;
         }

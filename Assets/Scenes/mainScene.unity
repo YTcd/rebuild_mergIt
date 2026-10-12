@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 1272742240}
   - component: {fileID: 1272742239}
   m_Layer: 0
-  m_Name: PoolingManger
+  m_Name: PoolingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1066,8 +1066,7 @@ MonoBehaviour:
   mainCamera: {fileID: 519420034}
   tileSprite: {fileID: 1102526082827792319, guid: 69a7dd20c71a8dd47ba887df23cd00fd, type: 3}
   board: {fileID: 154805410}
-  poolingManger: {fileID: 1272742239}
-  UIHandler: {fileID: 334825232}
+  UiHandler: {fileID: 334825232}
   TileSpriteSize: 74
   BoardBounds:
     serializedVersion: 2
@@ -1227,24 +1226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3a4c862e52d4c4297db61e5861c462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragerInputHandler
-  mouseEvent:
-    m_Name: Mouse Event
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 8d21c002-c93b-449e-96ab-880f504c0d58
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  clickAction:
-    m_Name: Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 2fea81c2-a073-4a44-a794-4ba0b035184a
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
