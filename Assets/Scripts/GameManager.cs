@@ -2,7 +2,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    private static GameManager instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindFirstObjectByType<GameManager>();
+                if (instance == null)
+                    instance = new GameObject(nameof(GameManager)).AddComponent<GameManager>();
+            }
+            return instance;
+        }
+    }
     [SerializeField]
     private Camera mainCamera;
     [SerializeField]
@@ -24,12 +37,12 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        instance = this;
         boardSize = TileSpriteSize * GridSize;
         Fit();
         GenerateBoard();

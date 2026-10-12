@@ -3,16 +3,29 @@ using UnityEngine;
 
 public class MergeManager : MonoBehaviour
 {
-    public static MergeManager Instance;
+    private static MergeManager instance;
+    public static MergeManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindFirstObjectByType<MergeManager>();
+                if (instance == null)
+                    instance = new GameObject(nameof(MergeManager)).AddComponent<MergeManager>();
+            }
+            return instance;
+        }
+    }
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        instance = this;
     }
 
     public void MergeItem(GameObject dragedItem, Vector2Int gridIndex)

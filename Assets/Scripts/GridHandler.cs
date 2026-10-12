@@ -2,19 +2,31 @@ using UnityEngine;
 
 public class GridHandler : MonoBehaviour
 {
-    public static GridHandler Instance;
+    private static GridHandler instance;
+    public static GridHandler Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindFirstObjectByType<GridHandler>();
+                if (instance == null)
+                    instance = new GameObject(nameof(GridHandler)).AddComponent<GridHandler>();
+            }
+            return instance;
+        }
+    }
 
     private GameObject[,] cells = new GameObject[GameManager.GridSize, GameManager.GridSize];
-    private Vector2[,] gridPositions;
+    private Vector2[,] gridPositions = new Vector2[GameManager.GridSize, GameManager.GridSize];
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
-        gridPositions = new Vector2[GameManager.GridSize, GameManager.GridSize];
+        instance = this;
     }
 
     public void SetPosition(int x, int y, Vector2 pos)

@@ -3,27 +3,42 @@ using UnityEngine.Pool;
 
 public class PoolingManger : MonoBehaviour
 {
-    public static PoolingManger Instance;
+    private static PoolingManger instance;
+    public static PoolingManger Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindFirstObjectByType<PoolingManger>();
+                if (instance == null)
+                    instance = new GameObject(nameof(PoolingManger)).AddComponent<PoolingManger>();
+            }
+            return instance;
+        }
+    }
 
     [SerializeField]
     private Icon iconPrefab;
     [SerializeField]
     private FusionEffect fusionEffect;
 
-    public IObjectPool<Icon> ItemPool { get; private set; }
-    public IObjectPool<FusionEffect> EffectPool { get; private set; }
+    private IObjectPool<Icon> itemPool;
+    private IObjectPool<FusionEffect> effectPool;
+
+    public IObjectPool<Icon> ItemPool =>
+        itemPool ??= new ObjectPool<Icon>(CreatePooledItem, OnTakeItemFromPool, OnReturnedItemToPool, OnDestroyPooledItem);
+    public IObjectPool<FusionEffect> EffectPool =>
+        effectPool ??= new ObjectPool<FusionEffect>(CreatePooledEffect, OnTakeEffectFromPool, OnReturnedEffectToPool, OnDestroyPooledEffect);
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
-
-        ItemPool = new ObjectPool<Icon>(CreatePooledItem, OnTakeItemFromPool, OnReturnedItemToPool, OnDestroyPooledItem);
-        EffectPool = new ObjectPool<FusionEffect>(CreatePooledEffect, OnTakeEffectFromPool, OnReturnedEffectToPool, OnDestroyPooledEffect);
+        instance = this;
     }
 
     private Icon CreatePooledItem()
