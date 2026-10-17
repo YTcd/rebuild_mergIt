@@ -52,6 +52,13 @@ public class Icon : MonoBehaviour
         return spriteIndex;
     }
 
+    public void PrepareMerge()
+    {
+        gridHandler.ReleaseItem(gridIndex);
+        gridIndex = new Vector2Int(-1, -1);
+        IsMerging = true;
+    }
+
     public int GetScore()
     {
         return 1 << spriteIndex;
