@@ -3,5 +3,5 @@
 - sprite의 pixel size와 unit size(world size)의 차이가 발생하는 이유와 보정
 - UnityEngine.Pool.ObjectPool<T>
 - TryGetComponent
-- Unity lazy singleton
+- [Unity lazy singleton](https://velog.io/@lovemytae/Unity-Lazy-Singletone)
 - destroyCancellationToken
