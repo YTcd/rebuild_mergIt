@@ -22,6 +22,12 @@ public class GameManager : MonoBehaviour
     private Sprite tileSprite;
     [SerializeField]
     private GameObject board;
+    [SerializeField]
+    private RectTransform mergeButton;
+    [SerializeField]
+    private float buttonMargin = 24f;
+    [SerializeField, Range(0.1f, 0.4f)]
+    private float maxStripFraction = 0.22f;
     public UIHandler UiHandler;
 
     public const int GridSize = 9;
@@ -56,9 +62,62 @@ public class GameManager : MonoBehaviour
         lastWidth = Screen.width;
         lastHeight = Screen.height;
 
-        float aspect = (float)Screen.width / Screen.height;
-        mainCamera.orthographicSize = aspect >= 1f ? boardSize / 2f
-            : boardSize / (2f * aspect);
+        float w = Screen.width;
+        float h = Screen.height;
+        bool landscape = w >= h;
+        float longAxis = Mathf.Max(w, h);
+        float shortAxis = Mathf.Min(w, h);
+
+        float freePixels = longAxis - shortAxis;
+
+        Vector2 btnSize = mergeButton != null ? mergeButton.sizeDelta : new Vector2(160f, 31f);
+        float needed = (landscape ? btnSize.x : btnSize.y) + 2f * buttonMargin;
+
+        float boardScreenSize;
+        float buttonScale;
+        if (freePixels >= needed)
+        {
+            boardScreenSize = shortAxis;
+            buttonScale = 1f;
+        }
+        else
+        {
+            float stripPixels = Mathf.Min(needed, longAxis * maxStripFraction);
+            boardScreenSize = longAxis - stripPixels;
+            buttonScale = Mathf.Min(1f, stripPixels / needed);
+        }
+
+        float worldPerPixel = boardSize / boardScreenSize;
+        mainCamera.orthographicSize = worldPerPixel * h / 2f;
+
+        Vector3 camPos = mainCamera.transform.position;
+        if (landscape)
+        {
+            camPos.x = (w / 2f - boardScreenSize / 2f) * worldPerPixel;
+            camPos.y = 0f;
+        }
+        else
+        {
+            camPos.x = 0f;
+            camPos.y = -(h / 2f - boardScreenSize / 2f) * worldPerPixel;
+        }
+        mainCamera.transform.position = camPos;
+
+        LayoutButton(landscape, w, h, boardScreenSize, buttonScale);
+    }
+
+    private void LayoutButton(bool landscape, float w, float h, float boardScreenSize, float scale)
+    {
+        if (mergeButton == null) return;
+
+        mergeButton.anchorMin = Vector2.zero;
+        mergeButton.anchorMax = Vector2.zero;
+        mergeButton.pivot = new Vector2(0.5f, 0.5f);
+
+        mergeButton.anchoredPosition = landscape
+            ? new Vector2((boardScreenSize + w) / 2f, h / 2f)
+            : new Vector2(w / 2f, (h - boardScreenSize) / 2f);
+        mergeButton.localScale = new Vector3(scale, scale, 1f);
     }
 
     private void GenerateBoard()
