@@ -22,3 +22,5 @@ Link
 - TryGetComponent
 - [Unity lazy singleton](https://velog.io/@lovemytae/Unity-Lazy-Singletone)
 - destroyCancellationToken
+- Animator, Animator Controller, AnimationClip
+- Input System
