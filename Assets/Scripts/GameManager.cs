@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 
         float freePixels = longAxis - shortAxis;
 
-        Vector2 btnSize = mergeButton != null ? mergeButton.sizeDelta : new Vector2(160f, 31f);
+        Vector2 btnSize = mergeButton != null ? mergeButton.sizeDelta + mergeButton.anchoredPosition : new Vector2(160f, 131f);
         float needed = (landscape ? btnSize.x : btnSize.y) + 2f * buttonMargin;
 
         float boardScreenSize;
@@ -103,21 +103,8 @@ public class GameManager : MonoBehaviour
         }
         mainCamera.transform.position = camPos;
 
-        LayoutButton(landscape, w, h, boardScreenSize, buttonScale);
-    }
-
-    private void LayoutButton(bool landscape, float w, float h, float boardScreenSize, float scale)
-    {
-        if (mergeButton == null) return;
-
-        mergeButton.anchorMin = Vector2.zero;
-        mergeButton.anchorMax = Vector2.zero;
-        mergeButton.pivot = new Vector2(0.5f, 0.5f);
-
-        mergeButton.anchoredPosition = landscape
-            ? new Vector2((boardScreenSize + w) / 2f, h / 2f)
-            : new Vector2(w / 2f, (h - boardScreenSize) / 2f);
-        mergeButton.localScale = new Vector3(scale, scale, 1f);
+        if (mergeButton != null)
+            mergeButton.localScale = new Vector3(buttonScale, buttonScale, 1f);
     }
 
     private void GenerateBoard()
