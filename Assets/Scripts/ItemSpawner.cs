@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
@@ -6,6 +7,8 @@ public class ItemSpawner : MonoBehaviour
     private GameObject iconContainer;
     [SerializeField]
     private PoolingManager poolingManager;
+    [SerializeField]
+    private int[] levelThresholds = { 100, 500 };
     private Vector2Int[] emptyCells;
 
     void Awake()
@@ -20,7 +23,26 @@ public class ItemSpawner : MonoBehaviour
         Icon item = poolingManager.ItemPool.Get();
         item.transform.SetParent(iconContainer.transform);
         GridHandler.Instance.StoreItem(validPos, item.gameObject);
-        item.Init(validPos);
+        item.SetReady(false);
+        StartCoroutine(SpawnRoutine(item, validPos));
+    }
+
+    private IEnumerator SpawnRoutine(Icon item, Vector2Int validPos)
+    {
+        CreateEffect effect = PoolingManager.Instance.CreateEffectPool.Get();
+        yield return effect.PlayAndWait(GridHandler.Instance.GetPosition(validPos));
+        item.Init(validPos, GetSpawnLevel());
+        item.SetReady(true);
+    }
+
+    private int GetSpawnLevel()
+    {
+        int score = GameManager.Instance.UiHandler.Current;
+        int level = 0;
+        foreach (int threshold in levelThresholds)
+            if (score >= threshold) level++;
+
+        return Mathf.Min(level, 3);
     }
 
     private Vector2Int GetEmptyGrid()

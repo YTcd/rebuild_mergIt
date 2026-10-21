@@ -39,7 +39,7 @@ public class MergeManager : MonoBehaviour
         const float duration = 0.2f;
 
         Icon storedItemIcon = storedItem.GetComponent<Icon>();
-        storedItemIcon.IsMerging = true;
+        storedItemIcon.IsBusy = true;
 
         Vector3 startPos = draggedItem.transform.position;
         Vector3 targetPos = storedItem.transform.position;

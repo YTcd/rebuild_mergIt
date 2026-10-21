@@ -119,7 +119,6 @@ dotnet_naming_rule.public_fields_pascal.symbols = public_fields
 dotnet_naming_rule.public_fields_pascal.style = pascal_case
 dotnet_naming_rule.public_fields_pascal.severity = warning
 
-# public bool IsMerging { get; private set; }
 dotnet_naming_rule.properties_and_events_pascal.symbols = properties_and_events
 dotnet_naming_rule.properties_and_events_pascal.style = pascal_case
 dotnet_naming_rule.properties_and_events_pascal.severity = warning

@@ -31,7 +31,7 @@ public class AutoMerger : MonoBehaviour
 
                 if (compareIcon == null) continue;
                 if (compareIcon.GetSpriteIndex() != icon.GetSpriteIndex()) continue;
-                if (compareIcon.IsMerging || icon.IsMerging) continue;
+                if (compareIcon.IsBusy || icon.IsBusy) continue;
 
 
                 storedIndex.x = c_row;

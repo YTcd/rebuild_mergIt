@@ -9,7 +9,7 @@ public class Icon : MonoBehaviour
     private int spriteIndex;
     private Vector2Int gridIndex;
     private GridHandler gridHandler;
-    public bool IsMerging;
+    public bool IsBusy;
 
     void Awake()
     {
@@ -22,12 +22,12 @@ public class Icon : MonoBehaviour
         gridHandler.ReleaseItem(gridIndex);
     }
 
-    public void Init(Vector2Int position)
+    public void Init(Vector2Int position, int itemLevel)
     {
         gridIndex = position;
-        IsMerging = false;
+        IsBusy = false;
         SetVisible(true);
-        SetIconSprite(0);
+        SetIconSprite(itemLevel);
 
         Vector2 coodPos = gridHandler.GetPosition(position);
         transform.position = coodPos;
@@ -37,6 +37,12 @@ public class Icon : MonoBehaviour
         float spriteWorldSize = spriteRenderer.sprite.bounds.size.x;
         float scale = GameManager.Instance.TileSpriteSize / spriteWorldSize;
         transform.localScale = new Vector3(scale, scale, 1f);
+    }
+
+    public void SetReady(bool ready)
+    {
+        IsBusy = !ready;
+        SetVisible(ready);
     }
 
     public void SetIconSprite(int index)
@@ -56,7 +62,7 @@ public class Icon : MonoBehaviour
     {
         gridHandler.ReleaseItem(gridIndex);
         gridIndex = new Vector2Int(-1, -1);
-        IsMerging = true;
+        IsBusy = true;
     }
 
     public int GetScore()
@@ -66,7 +72,7 @@ public class Icon : MonoBehaviour
 
     public void UpgradeItem()
     {
-        IsMerging = false;
+        IsBusy = false;
         spriteIndex++;
         SetIconSprite(spriteIndex);
     }
@@ -111,7 +117,7 @@ public class Icon : MonoBehaviour
             transform.position = (Vector3)nearestPos;
         }
         else if (gridHandler.GetItem(nearestIndex).GetComponent<Icon>().GetSpriteIndex() != spriteIndex
-        || spriteIndex == 4 || gridHandler.GetItem(nearestIndex).GetComponent<Icon>().IsMerging == true)
+        || spriteIndex == 4 || gridHandler.GetItem(nearestIndex).GetComponent<Icon>().IsBusy == true)
         {
             ReturnToOriginPos();
         }
@@ -119,7 +125,7 @@ public class Icon : MonoBehaviour
         {
             gridHandler.ReleaseItem(gridIndex);
             gridIndex = new Vector2Int(-1, -1);
-            IsMerging = true;
+            IsBusy = true;
             MergeManager.Instance.MergeItem(gameObject, nearestIndex);
         }
 

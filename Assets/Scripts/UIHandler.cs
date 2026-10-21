@@ -5,7 +5,7 @@ public class UIHandler : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text score;
-    private int current = 0;
+    public int Current { get; private set; }
 
     void Awake()
     {
@@ -16,7 +16,7 @@ public class UIHandler : MonoBehaviour
     {
         if (num == 0) return;
 
-        current += num;
-        score.SetText("Score : {0}", current);
+        Current += num;
+        score.SetText("Score : {0}", Current);
     }
 }

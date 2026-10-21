@@ -7,7 +7,7 @@ public class Dragger : MonoBehaviour
 
     private Vector3 originScale;
 
-    public bool CanDrag => !iconScript.IsMerging;
+    public bool CanDrag => !iconScript.IsBusy;
 
     void Awake()
     {

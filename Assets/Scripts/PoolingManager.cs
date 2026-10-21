@@ -22,14 +22,21 @@ public class PoolingManager : MonoBehaviour
     private Icon iconPrefab;
     [SerializeField]
     private FusionEffect fusionEffect;
+    [SerializeField]
+    private CreateEffect createEffect;
+
 
     private IObjectPool<Icon> itemPool;
     private IObjectPool<FusionEffect> effectPool;
+    private IObjectPool<CreateEffect> createEffectPool;
 
     public IObjectPool<Icon> ItemPool =>
         itemPool ??= new ObjectPool<Icon>(CreatePooledItem, OnTakeItemFromPool, OnReturnedItemToPool, OnDestroyPooledItem);
     public IObjectPool<FusionEffect> EffectPool =>
         effectPool ??= new ObjectPool<FusionEffect>(CreatePooledEffect, OnTakeEffectFromPool, OnReturnedEffectToPool, OnDestroyPooledEffect);
+    public IObjectPool<CreateEffect> CreateEffectPool =>
+        createEffectPool ??= new ObjectPool<CreateEffect>(CreatePooledCreateEffect, OnTakeCreateEffectFromPool, OnReturnedCreateEffectToPool, OnDestroyPooledCreateEffect);
+
 
     void Awake()
     {
@@ -79,6 +86,27 @@ public class PoolingManager : MonoBehaviour
     }
 
     private void OnDestroyPooledEffect(FusionEffect pooledEffect)
+    {
+        Destroy(pooledEffect.gameObject);
+    }
+
+    private CreateEffect CreatePooledCreateEffect()
+    {
+        CreateEffect pooledCreateEffect = Instantiate(createEffect);
+        return pooledCreateEffect;
+    }
+
+    private void OnTakeCreateEffectFromPool(CreateEffect pooledEffect)
+    {
+        pooledEffect.gameObject.SetActive(true);
+    }
+
+    private void OnReturnedCreateEffectToPool(CreateEffect pooledEffect)
+    {
+        pooledEffect.gameObject.SetActive(false);
+    }
+
+    private void OnDestroyPooledCreateEffect(CreateEffect pooledEffect)
     {
         Destroy(pooledEffect.gameObject);
     }

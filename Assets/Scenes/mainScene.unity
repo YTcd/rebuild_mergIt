@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSpawner
   iconContainer: {fileID: 866091454}
   poolingManager: {fileID: 1272742239}
+  levelThresholds: 64000000f4010000
 --- !u!4 &326264741
 Transform:
   m_ObjectHideFlags: 0
@@ -298,6 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIHandler
   score: {fileID: 900400012}
+  Current: 0
 --- !u!1 &460766026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPool
   iconPrefab: {fileID: 8962540437689299148, guid: 5ec3d2fcac341bd4f94b6064d5c5819d, type: 3}
   fusionEffect: {fileID: 1767801058244850287, guid: 59a36cb3d45fa1d4ebe58c90f31938b6, type: 3}
+  createEffect: {fileID: 8334036195784110034, guid: 3de81f023189abb4cb4eb70b9d1ee305, type: 3}
 --- !u!4 &1272742240
 Transform:
   m_ObjectHideFlags: 0
